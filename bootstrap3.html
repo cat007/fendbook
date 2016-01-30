@@ -55,7 +55,7 @@
 				<h1>WELCOME TO BOOK WORLD </h1>
 				<p>Great books help you understand, and they help you feel understood. -- John Green</p>
 				<a class="btn btn-default btn-primary"> BUY NOW ! </a>
-				<a class="btn btn-default btn-primary"> SELL NOW ! </a>
+				<a href = "#signin" data-toggle = "modal" class="btn btn-default btn-primary"> SELL NOW ! </a>
 				</center>
 			</div>
 		</div>
@@ -104,6 +104,40 @@
 
 
 </div>
+
+<div class="modal fade" id="signin" role="dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content">
+			<form class="form-horizontal">
+				<div class = "modal-header">
+					<div> Sign In</div>
+				</div>
+				<div class = "modal-body">
+					<div class="form-group">
+						<label for="contact-email" class="col-lg-2 control-label">Email Id:</label>
+						<div class="col-lg-10">
+							<input type="email" class="form-control" id="contact-email" placeholder= "Email Id">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="password" class="col-lg-2 control-label">Password:</label>
+						<div class="col-lg-10">
+							<input type="password" class="form-control" id="password" placeholder= "Password">
+						</div>
+					</div>
+				</div>
+				<div class = "modal-footer">
+					<a class="btn btn-default">SIGN UP</a>
+					<a class="btn btn-default" data-dismiss="modal">Close</a>
+
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+	</div>
 
 
 
