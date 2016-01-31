@@ -4,6 +4,7 @@ var app = angular.module('bookapp', []);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {template: 'partials/home.html'})
+        .when('/sellerHome', {template: 'partials/sellerHome.html'})
         .otherwise({ redirectTo: '/', template : 'partials/home.html'});
 });
 
@@ -12,7 +13,7 @@ app.controller('loginCtrl',function($scope,$location){
         var emailId = $scope.emailId;
         var password = $scope.password;
         if($scope.emailId == 'admin@gmail.com' && $scope.password == 'admin' ){
-            $location.path('/tester');
+            $location.path('/sellerHome');
         }
 
 

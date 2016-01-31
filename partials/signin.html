@@ -1,0 +1,34 @@
+<div class="modal fade" id="signin" role="dialog">
+	<div class = "modal-dialog">
+		<div class = "modal-content" ng-controller="loginCtrl">
+			<form class="form-horizontal" action="/">
+				<div class = "modal-header">
+					<div> Sign In</div>
+				</div>
+				<div class = "modal-body">
+					<div class="form-group">
+						<label for="contact-email" class="col-lg-2 control-label">Email Id:</label>
+						<div class="col-lg-10">
+							<input type="email" class="form-control" id="contact-email" placeholder= "Email Id" ng-model="emailId">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="password" class="col-lg-2 control-label" >Password:</label>
+						<div class="col-lg-10">
+							<input type="password" class="form-control" id="password" placeholder= "Password" ng-model="password">
+						</div>
+					</div>
+				</div>
+				<div class = "modal-footer">
+					<a class="btn btn-default btn-primary" data-toggle = "modal" data-dismiss="modal" ng-click="submit()">SIGN IN</a>
+					<a class="btn btn-default btn-primary" href = "#signup" data-toggle = "modal" data-dismiss="modal">SIGN UP</a>
+					<a class="btn btn-default" data-dismiss="modal">Close</a>
+
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</div>
