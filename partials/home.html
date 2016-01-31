@@ -1,14 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Bootstrap 3</title>
-		<meta name="viewport" content="width=device-width, intial-scale=1.0">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/styles.css">
-
-	</head>
-	<body>
-
 		<div class="navbar navbar-default navbar-static-top">
 
 			<div class="container">
@@ -83,32 +72,10 @@
 	</div>
 
 
-
-
-
-
-
-
-<!-- 
-              FOOTER GOES HERE
-
-
--->
-
-<div class="navbar navbar-default navbar-fixed-bottom">
-	<div class="container">
-		<p class="navbar-text pull-left"> BUY READ SELL !!</p>
-		<a href = "http://fb.com" class="navbar-button btn-success btn pull-center"> Donate Books Now !!</a>
-		<a href = "http://fb.com" class="navbar-button btn-primary btn pull-right"> Like on Facebook</a>
-	</div>
-
-
-</div>
-
 <div class="modal fade" id="signin" role="dialog">
 	<div class = "modal-dialog">
-		<div class = "modal-content">
-			<form class="form-horizontal">
+		<div class = "modal-content" ng-controller="loginCtrl">
+			<form class="form-horizontal" action="/">
 				<div class = "modal-header">
 					<div> Sign In</div>
 				</div>
@@ -116,18 +83,19 @@
 					<div class="form-group">
 						<label for="contact-email" class="col-lg-2 control-label">Email Id:</label>
 						<div class="col-lg-10">
-							<input type="email" class="form-control" id="contact-email" placeholder= "Email Id">
+							<input type="email" class="form-control" id="contact-email" placeholder= "Email Id" ng-model="emailId">
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="password" class="col-lg-2 control-label">Password:</label>
+						<label for="password" class="col-lg-2 control-label" >Password:</label>
 						<div class="col-lg-10">
-							<input type="password" class="form-control" id="password" placeholder= "Password">
+							<input type="password" class="form-control" id="password" placeholder= "Password" ng-model="password">
 						</div>
 					</div>
 				</div>
 				<div class = "modal-footer">
+					<a class="btn btn-default btn-primary" data-toggle = "modal" data-dismiss="modal" ng-click="submit()">SIGN IN</a>
 					<a class="btn btn-default btn-primary" href = "#signup" data-toggle = "modal" data-dismiss="modal">SIGN UP</a>
 					<a class="btn btn-default" data-dismiss="modal">Close</a>
 
@@ -150,7 +118,7 @@
 					<div class="form-group">
 						<label for="contact-email" class="col-lg-2 control-label">Phone No:</label>
 						<div class="col-lg-10">
-							<input type="email" class="form-control" id="contact-email" placeholder= "Email Id">
+							<input type="email" class="form-control" id="contact-email" placeholder= "Phone No.">
 						</div>
 					</div>
 
@@ -184,10 +152,5 @@
 
 
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> 
-		<script src="js/bootstrap.js"></script> 
 
 
-	</body>
-
-</html>

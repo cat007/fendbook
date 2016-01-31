@@ -1,0 +1,61 @@
+<!doctype html>
+<html ng-app = "bookapp">
+   
+
+
+   <head>
+         <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/jquery.min.js"></script>
+
+    <!-- UI Libs -->
+    <script src="Scripts/bootstrap.js"></script>
+
+
+      <title>Book Universe</title>
+          <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="Content/customerManagementStyles.css" rel="stylesheet" />
+
+
+   </head>
+
+
+   <body data-ng-init = "names=['Luv','Naveen']">
+
+      <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand " href="#/">
+                    <img src="Content/Images/books.png" alt="logo"> Book Universe
+                </a>
+                <ul class="nav nav-pills" data-ng-controller="NavbarController">
+                    <li data-ng-class="{'active':getClass('/customers')}"><a href="#/customers">Customers</a></li>
+                    <li data-ng-class="{'active':getClass('/orders')}"><a href="#/orders">Orders</a></li>
+                </ul>
+            </div>
+        </div>
+      </div>
+
+      <div animated-view></div>
+
+<!--       <div>
+         <label>Name:</label>
+         <input type = "text" ng-model = "yourName" placeholder = "Enter a name here">
+         <hr />
+         
+         <h1>Hello {{ yourName }}!</h1>
+
+         <ul>
+            <li data-ng-repeat = "person in names"> {{ person | uppercase }} </li>
+
+         </ul>
+      </div>
+ -->
+
+
+
+   </body>
+
+</html>
