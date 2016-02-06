@@ -4,9 +4,15 @@ app.factory('sessionService',['$http',function($http){
 			return sessionStorage.setItem(key,value);
 		},
 		get: function(key){
-			return sessionStorage.getItem(key,value);
+						console.log('sessionStorage = ');
+			console.log(sessionStorage);
+
+
+			return sessionStorage.getItem(key);
 		},
 		destroy: function(key){
+			console.log('sessionStorage = ');
+			console.log(sessionStorage);
 			return sessionStorage.removeItem(key);
 		}
 	}

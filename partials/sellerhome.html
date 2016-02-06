@@ -1,3 +1,5 @@
+		<div ng-controller="sellerHomeCtrl">  
+
 		<div class="navbar navbar-default navbar-static-top">
 
 			<div class="container">
@@ -6,9 +8,6 @@
 					<img src="Content/Images/rsz_books.png" alt="logo"> Book Store 
 				</div>
 
-
-
-				
 
 <!-- 				<a href="#" class="navbar-brand"> 
 					Book Store
@@ -23,7 +22,9 @@
 
 				<div class="collapse navbar-collapse navbarHeaderCollapse">
 					<ul class = "nav navbar-nav navbar-right">
+
 						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">My Books</a></li>
 						<li><a href="#">Social Media</a></li>
 						<li><a href="#">Our Vision</a></li>
 						<li><a href="#">About Us</a></li>
@@ -36,13 +37,12 @@
 
 		<H1>
 
-			WELCOME TO THE WORLD OF BOOKS
-
+			UPLOAD A BOOK TO SELL
 
 		</H1>
 
 
-<div ng-controller="SellerHomeController">  
+<div>  
     <div ng-style="{ backgroundImage: 'url(' + getBookImageUrl(100, 100) + ')' }"></div>
     Id: <span ng-bind="book.id"></span>
     <br/>
@@ -55,4 +55,6 @@
     <button ng-click="deleteBook()">Delete</button>
     <br/>
     <button ng-click="updateBook()">Update</button>
+</div>
+
 </div>

@@ -25,8 +25,13 @@ app.factory('loginService',function($http,$location,sessionService){
 			});
 		},
 		logout:function(){
+			console.log("WE ARE LOGGIN OUT");
 			sessionService.destroy('user');
 			$location.path('/home');
+		},
+		isLogged:function(){
+			console.log("Is he logged in");
+			if(sessionService.get('user')) return true;
 		}
 
 	}
