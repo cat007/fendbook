@@ -37,24 +37,59 @@
 
 		<H1>
 
-			UPLOAD A BOOK TO SELL
+			UPLOAD YOUR BOOK
 
 		</H1>
 
-
+<br/>
 <div>  
     <div ng-style="{ backgroundImage: 'url(' + getBookImageUrl(100, 100) + ')' }"></div>
-    Id: <span ng-bind="book.id"></span>
+
+    <label class="col-lg-1 control-label">Title:</label>  <input type="text"  class = "col-lg-3" ng-model="book.title" />
+    <br/> <br/>
+
+    <label class="col-lg-1 control-label">Author:</label>  <input type="text"  class = "col-lg-3" ng-model="book.author" />
+    <br/> <br/>
+
+    <label class="col-lg-1 control-label">Edition:</label>  <input type="text" placeholder= "Optional"  class = "col-lg-3" ng-model="book.edition"/>
+    <br/> <br/>
+
+    <label class="col-lg-1 control-label">Type:</label>  
+    <input type="radio" ng-model="book.type" value="new" ng-click="newBook()"/> New
+    <input type="radio" id = "old" ng-model="book.type" value="old" ng-click="oldBook()"/> Old
+	
+	<div class="wrapper">
+		<p ng-show="type == 'old'">
+					<br/> <br/>
+
+		    <label class="col-lg-1 control-label">Condition:</label>  <input type="text" class = "col-lg-3" ng-model="book.condition"/>
+	    </p> 
+	</div>
+
+
+    <br/> <br/>
+
+    <label class="col-lg-1 control-label">City:</label>  <input type="text" class = "col-lg-3" ng-model="book.city"/>
+    <br/> <br/>
+
+    <label class="col-lg-1 control-label">Location:</label>  <input type="text" class = "col-lg-3" ng-model="book.location"/>
+    <br/> <br/>
+
+    <button ng-click="addBook()">Add</button>
     <br/>
-    Name:<input type="text" ng-model="book.name" />
-    <br/>
-    Author: <input type="text" ng-model="book.author" />
-    <br/>
-    Is Available: <span ng-bind="isAvailable() ? 'Yes' : 'No' "></span>
-    <br/>
-    <button ng-click="deleteBook()">Delete</button>
-    <br/>
-    <button ng-click="updateBook()">Update</button>
-</div>
 
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+

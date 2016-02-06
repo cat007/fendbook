@@ -4,7 +4,7 @@ var app = angular.module('bookapp', ["ngRoute"]);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/home', { templateUrl: 'partials/home.html', controller: 'loginCtrl'})
-        .when('/sellerHome', { templateUrl: 'partials/sellerHome.html', })
+        .when('/sellerHome', { templateUrl: 'partials/sellerHome.html', controller: 'sellerHomeCtrl'})
         .otherwise({ redirectTo: '/home', templateUrl : 'partials/home.html'});
 });
 
