@@ -1,0 +1,6 @@
+{
+	"id": 1,
+	"first_name": "Luv",
+	"last_name": "Saxena",
+	"active": true
+}

@@ -28,7 +28,7 @@
 						<li><a href="#">Our Vision</a></li>
 						<li><a href="#">About Us</a></li>
 						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Log Out</a></li>
+						<li><a href="#" ng-click = "logout()">Log Out</a></li>
 					</ul>
 				</div>
 			</div>
@@ -40,3 +40,19 @@
 
 
 		</H1>
+
+
+<div ng-controller="SellerHomeController">  
+    <div ng-style="{ backgroundImage: 'url(' + getBookImageUrl(100, 100) + ')' }"></div>
+    Id: <span ng-bind="book.id"></span>
+    <br/>
+    Name:<input type="text" ng-model="book.name" />
+    <br/>
+    Author: <input type="text" ng-model="book.author" />
+    <br/>
+    Is Available: <span ng-bind="isAvailable() ? 'Yes' : 'No' "></span>
+    <br/>
+    <button ng-click="deleteBook()">Delete</button>
+    <br/>
+    <button ng-click="updateBook()">Update</button>
+</div>
