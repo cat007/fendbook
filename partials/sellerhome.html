@@ -62,9 +62,19 @@
 		<p ng-show="type == 'old'">
 					<br/> <br/>
 
-		    <label class="col-lg-1 control-label">Condition:</label>  <input type="text" class = "col-lg-3" ng-model="book.condition"/>
+		    <label class="col-lg-1 control-label">Condition:</label> 
+		    <div class="dropdown" ng-show="type == 'old'">
+    			<a data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
+    			<ul class="dropdown-menu">
+	        		<li>Action 1=</li>
+	        		<li>Action 2=</li>
+    			</ul>
+			</div>
+		    
 	    </p> 
 	</div>
+
+
 
 
     <br/> <br/>
