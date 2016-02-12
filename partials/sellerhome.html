@@ -1,4 +1,8 @@
 		<div ng-controller="sellerHomeCtrl">  
+<style type="text/css">.col-lg-123{width:8.33333333%;height:30px}
+</style>
+
+            
 
 		<div class="navbar navbar-default navbar-static-top">
 
@@ -45,13 +49,22 @@
 <div>  
     <div ng-style="{ backgroundImage: 'url(' + getBookImageUrl(100, 100) + ')' }"></div>
 
+<!--     <label class="col-lg-1 control-label">Image:</label><input type="file" id="file" name="file" ng-model="book.filer"/>
+<br/> <br/>
+ -->
+    <label class="col-lg-1 control-label">Image:</label>
+    <input type="file" ng-file-select="onFileSelect($files)" >
+    <br/>
+
+
     <label class="col-lg-1 control-label">Title:</label>  <input type="text"  class = "col-lg-3" ng-model="book.title" />
     <br/> <br/>
 
     <label class="col-lg-1 control-label">Author:</label>  <input type="text"  class = "col-lg-3" ng-model="book.author" />
     <br/> <br/>
 
-    <label class="col-lg-1 control-label">Edition:</label>  <input type="text" placeholder= "(Optional)"  class = "col-md-1" ng-model="book.edition"/>
+    <label class="col-lg-1 control-label">Edition:</label>  <input type="text" placeholder= "Optional" id="name"  class = "col-lg-123 form-control" ng-model="book.edition"/>
+
     <br/> <br/>
 
     <label class="col-lg-1 control-label">Type:</label>  
@@ -137,6 +150,8 @@
 
 
 </div>
+
+
 
 
 
