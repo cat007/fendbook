@@ -51,42 +51,81 @@
     <label class="col-lg-1 control-label">Author:</label>  <input type="text"  class = "col-lg-3" ng-model="book.author" />
     <br/> <br/>
 
-    <label class="col-lg-1 control-label">Edition:</label>  <input type="text" placeholder= "Optional"  class = "col-lg-3" ng-model="book.edition"/>
+    <label class="col-lg-1 control-label">Edition:</label>  <input type="text" placeholder= "(Optional)"  class = "col-md-1" ng-model="book.edition"/>
     <br/> <br/>
 
     <label class="col-lg-1 control-label">Type:</label>  
-    <input type="radio" ng-model="book.type" value="new" ng-click="newBook()"/> New
-    <input type="radio" id = "old" ng-model="book.type" value="old" ng-click="oldBook()"/> Old
-	
-	<div class="wrapper">
-		<p ng-show="type == 'old'">
-					<br/> <br/>
+    <input type="radio" ng-model="book.type" value="new"/> New
+    <input type="radio" id = "old" ng-model="book.type" value="old"/> Old
+    <br/> <br/>
 
-		    <label class="col-lg-1 control-label">Condition:</label> 
-		    <div class="dropdown" ng-show="type == 'old'">
-    			<a data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
-    			<ul class="dropdown-menu">
-	        		<li>Action 1=</li>
-	        		<li>Action 2=</li>
-    			</ul>
-			</div>
-		    
+        <label for="repeatSelect" class="col-lg-1"> City : </label>
+    <select name="repeatSelect" id="repeatSelect" ng-model="book.city" ng-change="cityselected(book.city)">
+      <option ng-selected="1" >---Select City---</option>	 
+      <option ng-repeat="option in availableCities" value="{{option}}">{{option}}</option>
+    </select>
+
+    <br/> <br/>
+
+
+
+
+
+ 	<div class="wrapper">
+		<p ng-show="placechoice == 'city_selected'">
+
+		    <label class="col-lg-1 control-label">Location:</label> 
+
+		        <select name="repeatSelect" id="repeatSelect" ng-model="book.location">
+      <option ng-selected="1" >---Select Location---</option>	 
+      <option ng-repeat="option in correspondingLocations" value="{{option}}">{{option}}</option>
+    </select>
+
 	    </p> 
 	</div>
 
 
 
+            <label for="repeatSelect" class="col-md-2 col-md-offset-1"> OR </label>
+    <br/> <br/>
+
+            <label for="repeatSelect" class="col-lg-1"> Institute : </label>
+    <select name="repeatSelect" id="repeatSelect" ng-model="book.institute">
+    	<option ng-selected="1" >---Select Your Institute---</option>	 
+      <option ng-repeat="option in availableInstitutes" value="{{option}}">{{option}}</option>
+    </select>
 
     <br/> <br/>
 
-    <label class="col-lg-1 control-label">City:</label>  <input type="text" class = "col-lg-3" ng-model="book.city"/>
+        <label class="col-lg-1 control-label">Post for: </label>  
+    <input type="radio" ng-model="book.selling_price" value="new" ng-click="sellingBook()"/> Selling
+    <input type="radio" ng-model="book.selling_price" ng-click="donateBook()" value="0" /> Donation
     <br/> <br/>
 
-    <label class="col-lg-1 control-label">Location:</label>  <input type="text" class = "col-lg-3" ng-model="book.location"/>
+<div class="wrapper">
+	<p ng-show="sellingType == 'selling'">
+
+
+    <label class="col-lg-1 centered control-label">Market Price:</label>  
+    <input  type="number" value="1000" min="0" step="1" data-number-to-fixed="2" data-number-stepfactor="100" class="currency col-md-1 " ng-model="book.mrp_price" />
+    <br/> <br/> <br/> 
+
+    <label class="col-lg-1 centered control-label">Selling Price:</label>  
+    <input  type="number" value="1000" min="0" step="1" data-number-to-fixed="2" data-number-stepfactor="100" class="currency col-md-1 " ng-model="book.selling_price" />
+    <br/> <br/> <br/>
+
+ 	</p>
+</div>
+
+    <label class="col-lg-1 control-label">Special Note:</label>  <input type="text"  class = "col-lg-3" ng-model="book.specialNote" />
     <br/> <br/>
 
-    <button ng-click="addBook()">Add</button>
-    <br/>
+
+
+    <button  ng-click="addBook(book)">Upload</button>
+
+    <br/> <br/>
+    <br/> <br/>
 
 </div>
 
