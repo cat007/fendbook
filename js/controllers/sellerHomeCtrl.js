@@ -1,10 +1,12 @@
-app.controller('sellerHomeCtrl',function($scope,loginService){
+app.controller('sellerHomeCtrl',function($scope,loginService,multiPartForm){
 
 	locationsList = {};
 	locationsList['Bangalore'] = ['Koramangala','Indiranagar','Domlur','Bellandur'];
 	locationsList['Delhi'] = ['Gurgaon','Indiranagar','Domlur','Bellandur'];
 
 	$scope.txt = 'Page Home';
+
+	$scope.book = {};
 
 	$scope.condition = ["Good","Fair","Poor"];
 
@@ -33,37 +35,31 @@ app.controller('sellerHomeCtrl',function($scope,loginService){
 		console.log(city);
 		$scope.placechoice = 'city_selected';
 		$scope.correspondingLocations = locationsList[city];
-	}
+	},
 
 	$scope.sellingBook = function(){
 		$scope.sellingType = 'selling';
 
-	}
+	},
 
 	$scope.donateBook = function(){
 		$scope.sellingType = 'donation';
 
-	}
+	},
 
 	$scope.addBook = function(book){
 
-		var f = document.getElementById('file').files[0],
-      r = new FileReader();
-  r.onloadend = function(e){
 
-    var data = e.target.result;
-    //send you binary data via $http or $resource or do anything else with it
-    console.log("WHats the image");
-    console.log(data);
+//Upload image here
 
-  }
-  r.readAsBinaryString(f);
-
-
-		console.log("lets check the book");
+  var uploadUrl = '/Users/luv.saxena/new_image';
+  		console.log("lets check the book here");
 		console.log(book);
 		console.log($scope.book);
 
+  multiPartForm.postForm(uploadUrl,$scope.book);
+
+  //Upload data here
 
 	}
 
