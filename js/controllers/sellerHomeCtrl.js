@@ -49,6 +49,7 @@ app.controller('sellerHomeCtrl',function($scope,loginService,multiPartForm){
 
 	$scope.addBook = function(book){
 
+$scope.book['user_id'] = loginService.getSessionId();
 
 //Upload image here
 

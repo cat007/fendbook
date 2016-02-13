@@ -35,6 +35,10 @@ app.factory('loginService',function($http,$location,sessionService){
 		isLogged:function(){
 			console.log("Is he logged in");
 			if(sessionService.get('user')) return true;
+		},
+		getSessionId:function(){
+			console.log("Get session Id");
+			return sessionService.get('user');
 		}
 
 	}
