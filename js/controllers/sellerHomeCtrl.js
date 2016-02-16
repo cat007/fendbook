@@ -1,10 +1,12 @@
-app.controller('sellerHomeCtrl',function($scope,loginService,multiPartForm){
+app.controller('sellerHomeCtrl',function($scope,$location,loginService,multiPartForm,bookService){
 
 	locationsList = {};
 	locationsList['Bangalore'] = ['Koramangala','Indiranagar','Domlur','Bellandur'];
 	locationsList['Delhi'] = ['Gurgaon','Indiranagar','Domlur','Bellandur'];
 
 	$scope.txt = 'Page Home';
+
+	$scope.resBooks = [];
 
 	$scope.book = {};
 
@@ -60,7 +62,15 @@ $scope.book['user_id'] = loginService.getSessionId();
 
   multiPartForm.postForm(uploadUrl,$scope.book);
 
-  //Upload data here
+	}
+
+	$scope.getBook = function(){
+		console.log("R we here");
+		var user_id = loginService.getSessionId();
+
+		bookService.getAllBooksForUserId(user_id,$scope);
+
+
 
 	}
 
