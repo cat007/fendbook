@@ -68,7 +68,16 @@ $scope.book['user_id'] = loginService.getSessionId();
 		console.log("R we here");
 		var user_id = loginService.getSessionId();
 
-		bookService.getAllBooksForUserId(user_id,$scope);
+		bookService.getAllBooksForUserId(user_id,$scope).then(function(response){
+			console.log("COOL the things changed 1");
+			console.log(response);
+			$scope.resBooks = response.data;
+			console.log("COOL the things changed");
+			console.log($scope.resBooks);
+			// $location.path("/viewuploadedBook");
+
+
+		});
 
 
 
