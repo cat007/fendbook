@@ -4,11 +4,8 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         var password = $scope.password;
         var data = new Data(emailId,password);
         loginService.login(data,$scope);
-<<<<<<< HEAD
-        console.log("Whats happening here 123");
-=======
 
->>>>>>> feature_login
+        console.log("Whats happening here 123");
         // if($scope.emailId == 'admin@gmail.com' && $scope.password == 'admin' ){
             // $location.path('/sellerHome');
         // }
