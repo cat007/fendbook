@@ -69,7 +69,7 @@
 	</div>
 
 
-<div class="modal fade" id="signin" role="dialog">
+<div class="modal fade" id="signinn" role="dialog">
 	<div class = "modal-dialog">
 		<div class = "modal-content">
 			<form class="form-horizontal" action="/">
@@ -92,8 +92,8 @@
 					</div>
 				</div>
 				<div class = "modal-footer">
-					<a class="btn btn-default btn-primary" data-toggle = "modal" data-dismiss="modal" ng-click="submit()" data-dismiss="modal">SIGN IN</a>
-					<a class="btn btn-default btn-primary" href = "#signup" data-toggle = "modal" data-dismiss="modal">SIGN UP</a>
+					<a class="btn btn-default btn-primary" data-toggle = "modal" data-dismiss="modal" ng-click="submit()">SIGN IN</a>
+					<a class="btn btn-default btn-primary" href = "#signupp" data-toggle = "modal" data-dismiss="modal">SIGN UP</a>
 					<a class="btn btn-default" data-dismiss="modal">Close</a>
 
 				</div>
@@ -101,10 +101,215 @@
 
 		</div>
 	</div>
-
 </div>
 
-<div class="modal fade" id="signup" role="dialog">
+
+<!-- Signin Pop-up HTML implementation -->
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinModalLabel" aria-hidden="true">
+	<div class="modal-dialog login-modal-dialog">
+		<div class="modal-content login-modal">
+			<div class="modal-header login-modal-header modal-blue">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span area-hidden="true">&times;</span>
+				</button>
+				<h1 class="modal-title login-modal-title text-center" id="signinModalLabel">Sign in</h1>				
+			</div>
+			<div class="model-body">
+				<!-- <div class="text-center"> -->
+					<!-- Nav tabs -->
+<!-- 					<div role="tabpanel" class="login-tab">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a id="signin-taba" href="#home" aria-controls="home" role="tab">
+							Sign In</a></li>							
+							<li role="presentation"><a id="signin-taba" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li>							
+						</ul>
+ -->
+						<!-- Tab Panes -->
+						<!-- <div class="tab-content"> -->
+					    	<div class="login-modal-form" id="home">
+					    		&nbsp;&nbsp;
+					    		<form name="loginForm">
+									<div class="form-group">
+								    	<div class="input-group">
+								      		<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+								      		<input type="email" name="input" class="form-control" id="login_username" placeholder="somebody@example.com" ng-model="email" required>
+								    	</div>
+								    	<span class="help-block has-error error" id="login-email-error" ng-show="loginForm.input.$error.email">Not a valid email</span>
+								  	</div>
+								  	<div class="form-group">
+								    	<div class="input-group">
+								      		<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+								      		<input type="password" class="form-control" id="login_password" placeholder="Password">
+								    	</div>
+								    	<span class="help-block has-error" id="login-password-error"></span>
+								  	</div>
+								  	<div class="checkbox">
+                            			<span class="character-checkbox" name="login_checkbox" onclick="showPassword()"></span>
+                            			<span class="label">Show password</span>
+                        			</div>
+						  			<button type="button" id="login_btn" class="btn btn-block bt-login center-block" data-loading-text="Signing In...." ng-click="submit()" data-dismiss="modal">Login</button>
+						  			<div class="clearfix"></div>
+						  			
+						  			<div class="login-modal-footer">
+						  				<div class="row">
+											<div class="col-xs-8 col-sm-8 col-md-8">
+												<i class="glyphicon glyphicon-lock"></i>
+												<a href="#forgotpassword" data-toggle = "modal" data-dismiss="modal" class="forgetpass-tab"> Forgot password? </a>
+											</div>
+											
+											<div class="col-xs-4 col-sm-4 col-md-4 pull-right">
+												<i class="glyphicon glyphicon-ok"></i>
+												<a href = "#signup" data-toggle = "modal" data-dismiss="modal" class="signup-tab"> Sign Up </a>
+											</div>
+										</div>
+										
+										<div class="row popup_row-sm-offset-3 popup_loginOr">
+											<div class="col-xs-12">
+												<hr class="popup_hrOr">
+												<span class="popup_spanOr">Or</span>
+											</div>
+
+										</div>
+
+										<div class="row popup_row-sm-offset-3 popup_socialButtons">
+    	    								<div class="col-xs-4">
+		        								<a href="#" class="btn btn-lg btn-block popup_btn-facebook">
+			        								<i class="fa fa-facebook visible-xs"></i>
+			        								<span class="hidden-xs">Facebook</span>
+		        								</a>
+	        								</div>
+	        								<div class="col-xs-4">
+										        <a href="#" class="btn btn-lg btn-block popup_btn-twitter">
+											    	<i class="fa fa-twitter visible-xs"></i>
+											    	<span class="hidden-xs">Twitter</span>
+			        							</a>
+		        							</div>	
+								        	<div class="col-xs-4">
+										        <a href="#" class="btn btn-lg btn-block popup_btn-google">
+											        <i class="fa fa-google-plus visible-xs"></i>
+											        <span class="hidden-xs">Google+</span>
+										        </a>
+									        </div>	
+										</div>
+						  			</div>
+								</form>
+					    	</div>
+					<!-- </div> -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Sign Up Pop-up HTML implementation -->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+	<div class="modal-dialog login-modal-dialog">
+		<div class="modal-content login-modal">
+			<div class="modal-header login-modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span area-hidden="true">&times;</span>
+				</button>
+				<h1 class="modal-title login-modal-title text-center" id="signupModalLabel">Sign Up</h1>				
+			</div>
+
+			<div class="model-body">
+				<div class="login-modal-form" id="profile">
+					&nbsp;&nbsp;
+				<form name="signupform">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i>@</i></div>
+							<input type="email" name="input" class="form-control" id="signup_email" placeholder="Enter Your Mail Id" ng-model="emailId" required>
+						</div>
+						<span class="help-block has-error error" id="signup_email_error" ng-show="signupform.input.$error.email">Not a valid email</span>
+					</div>  
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></div>
+							<input type="text" class="form-control" id="signup_contact" placeholder="Contact">
+						</div>
+						<span class="help-block has-error" id="email-error"></span>
+					</div>
+
+					<div class="form-group">	
+						<div class="input-group">
+							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+							<input type="text" class="form-control" id="signup_password" placeholder="Password">
+						</div>
+						<span class="help-block has-error" id="email-error"></span>
+					</div>
+							
+					<div class="form-group">			
+						<div class="input-group">
+							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+							<input type="text" class="form-control" id="signup_reenter_password" placeholder="Renter Password">
+						</div>
+						<span class="help-block has-error" id="email-error"></span>
+					</div>
+						
+					<div class="checkbox">
+                    	<span class="character-checkbox" name="signup_checkbox" onclick="showPassword()"></span>
+                    	<span class="label">Show password</span>
+                    </div>
+
+                    <button type="button" id="signup_btn" class="btn btn-block bt-signup pull-right" data-loading-text="Singing Up....">Submit
+                    </button>
+					<div class="clearfix"></div>
+
+					<div class="text-right text-bottom-margin">
+						<a href="#signin" data-toggle = "modal" data-dismiss="modal" class="signin-tab"><strong>Already an user Sign in?</strong></a>
+					</div>
+
+				</form>			
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
+
+
+<!-- Forgot Password Pop-up HTML implementation -->
+<div class="modal fade" id="forgotpassword" tabindex="-1" role="dialog" aria-labelledby="fpModalLabel" aria-hidden="true">
+	<div class="modal-dialog login-modal-dialog">
+		<div class="modal-content login-modal">
+			<div class="modal-header login-modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span area-hidden="true">&times;</span>
+				</button>
+				<h1 class="modal-title login-modal-title text-center" id="fpModalLabel">Forgot Password</h1>				
+			</div>
+
+			<div class="model-body">
+				<div class="login-modal-form" id="fpwd">
+					&nbsp;&nbsp;
+				<form name="forgotPassword">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><i>@</i></div>
+							<input type="email" name="input" class="form-control" id="fpwd_email" placeholder="Enter Your Mail Id" ng-model="emailid" required>
+						</div>
+						<span class="help-block has-error error" id="fp" ng-show="forgotPassword.input.$error.email">Not a valid email</span>
+					</div>  
+
+					<button type="button" id="fpwd_btn" class="btn bt-fpwd pull-right">Send Password Reset Instructions
+					</button>
+					<div class="clearfix"></div>
+
+					<div class="text-right text-bottom-margin">
+						<a href="#signin" data-toggle = "modal" data-dismiss="modal" class="signin-tab"><strong>Back to Sign in?</strong></a>
+					</div>
+				</form>
+				</div>
+			</div>		
+		</div>	
+	</div>		
+</div>
+
+<div class="modal fade" id="signupp" role="dialog">
 	<div class = "modal-dialog">
 		<div class = "modal-content">
 			<form class="form-horizontal">
@@ -135,7 +340,7 @@
 					</div>
 				</div>
 				<div class = "modal-footer">
-					<a class="btn btn-default btn-primary" href = "#signup" data-toggle = "modal">SIGN UP</a>
+					<a class="btn btn-default btn-primary" href = "#signinn" data-toggle = "modal" data-dismiss="modal">SIGN UP</a>
 					<a class="btn btn-default" data-dismiss="modal">Close</a>
 
 				</div>
