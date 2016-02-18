@@ -3,7 +3,7 @@ app.factory('loginService',function($http,$location,sessionService){
 	return {
 		login:function(data,scope){
 			//Ideally check whether the username and password exists in the backend or not
-			$http.get('/Users/luv.saxena/Projects/Fend/json/user.txt').then(function(response){
+			$http.get('json/user.txt').then(function(response){
 
                 console.log("response = ");
 				var res = response.data;

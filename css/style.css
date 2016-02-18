@@ -1,0 +1,246 @@
+body{
+	color: #111;
+    font-family: "Noto Serif",serif;
+    font-size: 16px;
+    line-height: 1.62em;
+}
+
+.text-bottom-margin {
+    margin-bottom: 10px;
+}
+
+.form-inline .form-group{
+	margin-bottom: 20px;
+	float: right;
+}
+.title{
+    text-decoration:underline;
+    padding: 10px 5px;
+}
+.btn-launch,.btn-launch:hover, .btn-launch:active, .btn-launch:focus{
+	background-color: #2ecc71;
+    border: medium none #2ecc71;
+    box-shadow: 0 3px 0 #d35400, 0 5px 2px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 40px;
+    margin-top:10%;
+}
+.bt-login,.bt-login:hover, .bt-login:active, .bt-login:focus {
+    background-color: #337ab7;
+    color: #ffffff;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: 20px;
+    transition: background-color 300ms linear 0s;
+    width: 40%
+}
+
+.bt-signup,.bt-signup:hover, .bt-signup:active, .bt-signup:focus {
+    background-color: #337ab7;
+    color: #ffffff;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    transition: background-color 300ms linear 0s;
+    width: 40%
+
+}
+
+.bt-fpwd,.bt-fpwd:hover, .bt-fpwd:active, .bt-fpwd:focus {
+    background-color: #337ab7;
+    color: #ffffff;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    transition: background-color 300ms linear 0s;
+}
+
+.login-tab {
+	margin: 0 auto;
+	max-width: 380px;
+}
+
+.login-modal-header {
+	background: #337ab7;
+	color: #fff;
+    padding:10px;
+}
+
+.login-modal-header .modal-title {
+	color: #fff;
+}
+
+.login-modal-header .close {
+	color: #fff;
+}
+
+.login-modal-title {
+    margin: 0;
+    line-height: 1.0;
+    font-size: 30px;
+}
+
+.login-modal-dialog {
+    width: 450px auto;
+    margin: 30px auto
+}
+
+.login-modal i {
+	color: #000;
+}
+
+.login-modal form {
+	max-width: auto;
+    padding-left: 48px;
+    padding-right: 48px;
+}
+
+.tab-pane form {
+	margin: 0 auto;
+}
+
+.login-modal-form form {
+    margin: 0 auto;   
+}
+.login-modal-footer{
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+.checkbox {
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.checkbox.show:before {
+    content: '\e013';
+    color: #1fa67b;
+    font-size: 17px;
+    margin: 1px 0 0 3px;
+    position: absolute;
+    pointer-events: none;
+    font-family: 'Glyphicons Halflings';
+}
+.checkbox .character-checkbox {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    display: inline-block;
+}
+.checkbox .label {
+    color: #6d6d6d;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.popup_row-sm-offset-3 div:first-child[class*="col-"] {
+        margin-left: 0%;
+}
+
+.popup_loginOr {
+    position: relative;
+    font-size: 1.5em;
+    color: #aaa;
+    margin-top: 1em;
+    margin-bottom: -1em;
+    padding-top: 0.1em;
+    padding-bottom: 1em;
+}
+
+.popup_loginOr .popup_hrOr {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    position: relative;
+
+}
+
+.popup_loginOr .popup_spanOr {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: -0.6em;
+    margin-left: -1.5em;
+    background-color: white;
+    width: 3em;
+    text-align: center;
+    color: #337ab7;
+}
+
+.popup_socialButtons a {
+    color: white; // In yourUse @body-bg 
+    opacity:0.9;
+    text-align: center;
+}
+
+.popup_socialButtons a:hover {
+    color: white;
+    opacity:1;      
+}
+
+.popup_socialButtons .popup_btn-facebook {
+    background: #3b5998;
+}
+
+.popup_socialButtons .popup_btn-twitter {
+    background: #00aced;
+}
+
+.popup_socialButtons .popup_btn-google {
+    background: #c32f10;
+}
+
+
+/*.icon-github::before {
+    content: "";
+}
+.icon-twitter::before {
+    content: "";
+}
+.icon-facebook::before {
+    content: "";
+}
+.icon-gplus::before {
+    content: "";
+}
+.icon-linkedin::before {
+    content: "";
+}
+.icon-dribbble::before {
+    content: "";
+}
+.icon-skype::before {
+    content: "";
+}*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    border: 0 none;
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-kerning: inherit;
+    font-language-override: inherit;
+    font-size: 100%;
+    font-size-adjust: inherit;
+    font-stretch: inherit;
+    font-style: inherit;
+    font-synthesis: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}   
