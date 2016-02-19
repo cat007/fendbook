@@ -14,6 +14,7 @@ app.controller('sellerHomeCtrl',function($scope,$location,loginService,multiPart
 
 	$scope.availableCities = ["Bangalore","Delhi","Jaipur","Pune"];
 	$scope.availableInstitutes = ["Indian Institute of Technology Delhi","NIT Allahabad"];
+	$scope.categoryList = ["Science fiction","Satire","Drama","Action and Adventure","Romance","Mystery","Horror","Self help","Health","Guide","Travel","Children's","Religion, Spirituality & New Age","Science","History","Math","Anthology","Poetry","Encyclopedias","Dictionaries","Comics","Art","Cookbooks","Diaries","Journals","Prayer books","Series","Trilogy","Biographies","Autobiographies","Fantasy"];
 
 	$scope.logout = function(){
 		loginService.logout();

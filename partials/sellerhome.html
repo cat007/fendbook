@@ -41,7 +41,7 @@
 
 		<H1>
 
-			UPLOAD YOUR BOOK
+			<div>UPLOAD YOUR BOOK </div>
 
 		</H1>
 
@@ -69,6 +69,15 @@
 
     <br/> <br/>
 
+                <label for="repeatSelect" class="col-lg-1"> Category : </label>
+    <select name="repeatSelect" id="repeatSelect" ng-model="book.category">
+        <option ng-selected="1" >---Select Category---</option>    
+      <option ng-repeat="option in categoryList">{{option}}</option>
+    </select>
+
+    <br/> <br/>
+
+
     <label class="col-lg-1 control-label">Type:</label>  
     <input type="radio" ng-model="book.type" value="new"/> New
     <input type="radio" id = "old" ng-model="book.type" value="old"/> Old
@@ -76,7 +85,7 @@
 
         <label for="repeatSelect" class="col-lg-1"> City : </label>
     <select name="repeatSelect" id="repeatSelect" ng-model="book.city" ng-change="cityselected(book.city)">
-      <option ng-selected="1" >---Select City---</option>	 
+      <option ng-selected="2" >---Select City---</option>
       <option ng-repeat="option in availableCities" value="{{option}}">{{option}}</option>
     </select>
 
@@ -113,8 +122,8 @@
     <br/> <br/>
 
         <label class="col-lg-1 control-label">Post for: </label>  
-    <input type="radio" ng-model="book.sellingType" value="new" ng-click="sellingBook()"/> Selling
-    <input type="radio" ng-model="book.sellingType" ng-click="donateBook()" value="0" /> Donation
+    <input type="radio" ng-model="book.sellingType" value="selling" ng-click="sellingBook()"/> Selling
+    <input type="radio" ng-model="book.sellingType" ng-click="donateBook()" value="donation" /> Donation
     <br/> <br/>
 
 <div class="wrapper">
@@ -132,12 +141,21 @@
  	</p>
 </div>
 
-    <label class="col-lg-1 control-label">Special Note:</label>  <input type="text"  class = "col-lg-3" ng-model="book.specialNote" />
+    <label class="col-lg-1 control-label">Description:</label>  
+        <TEXTAREA   Name="content" ROWS=2 COLS=34></TEXTAREA>
     <br/> <br/>
+    <br/>
+
+    <label class="col-lg-1 control-label">Special Note:</label>  
+    <input type="text"  class = "col-lg-3" ng-model="book.specialNote" />
+
+    <br/> <br/>
+    <br/>
 
 
 
-    <button  ng-click="addBook(book)">Upload</button>
+
+    <button class="navbar-button btn-success btn pull-center"  ng-click="addBook(book)">Upload</button>
 
     <br/> <br/>
     <br/> <br/>

@@ -5,7 +5,7 @@ app.factory('bookService',function($http,$location){
 
 			var newArray;
 
-		return $http.get('http://localhost:3000/api/books?email_id=1@gmail.com');
+		return $http.get('http://localhost:3000/api/books?user_id=1');
 		}
 
 

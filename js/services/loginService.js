@@ -5,7 +5,9 @@ app.factory('loginService',function($http,$location,sessionService){
 			console.log("$$$$$$$$$11111");
 			//Ideally check whether the username and password exists in the backend or not
 			// $http.get('/Users/luv.saxena/fendbook/json/user.txt').then(function(response){
-			$http.get('http://localhost:3000/api/users/1').then(function(response){
+				console.log("Users mail = ");
+				console.log(scope.email);
+			$http.get('http://localhost:3000/api/users?email='+scope.email).then(function(response){
 				console.log("Whats happening");
 
                 console.log("response = ");
@@ -14,7 +16,7 @@ app.factory('loginService',function($http,$location,sessionService){
 
 				if(res.active){
 					console.log("response = COOLS");
-					sessionService.set('user',data.user);
+					sessionService.set('user',res.id);
 					$location.path('/sellerHome');
 				}
 				else{
