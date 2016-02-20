@@ -44,15 +44,155 @@
 
 
         <div class="container">
-            <div class="jumbotron col-lg-123">
+            <div class="jumbotron col-md-5">
+
+            	<div class="row">
+
+            		<div class="col-md-3">
+            			<img src="Content/Images/1455981676_tick_16.png" alt="logo"> 
+            		</div>
+
+            		<div class = "col-md-8">
+            			<div class="row">
+
+            			                <h5 align="center">SUCCESSFULLY UPLOADED </h5>
+            			            </div>
+            			            <br/>
+					                
+					                <div class="row">
+					                	<div class = "col-md-6">
+					                <a class="btn btn-default btn-primary" ng-click="getBook()"> View My Books </a>
+					            </div>
+					            <div class = "col-md-5">
+
+					                <a href = "#sellerHome" data-toggle = "modal" class="btn btn-default btn-primary"> Upload more books </a>
+					                </div>
+					            </div>
+            		</div>
+            	
+
+
                 
-                <h5>SUCCESSFULLY UPLOADED </h5>
-                <p></p>
-                <a class="btn btn-default btn-primary" ng-click="getBook()"> View uploaded book </a>
-                <a href = "#sellerHome" data-toggle = "modal" class="btn btn-default btn-primary"> Upload more books </a>
+                </div>
                 
             </div>
         </div>
+
+
+
+
+        <!-- MY LIST ELEMENT -->
+
+
+        	<div ng-repeat="book in resBooks">
+
+
+         <div  itemscope class="col-md-11 result">
+              <div class="row">
+              	                <div class="col-md-2">
+              	                	<!-- PUT THE IMAGE HERE -->
+                	        		<img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="150px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive"/>
+              	                </div>
+
+              	                <div class="col-md-10 product_results">
+              	                	<div class="row">     
+										<div class="col-md-7">                  
+											<h1  itemprop="name">
+											<b class="defaultcolor"> {{book.}}  </b>
+											</a>
+											</h1>
+										</div>                        
+ 
+
+              	                	</div>
+              	                </div>
+
+
+
+
+              </div>
+          </div>
+
+      </div>
+
+
+     
+<!-- THIS IS THE START -->
+
+
+
+
+          <div  itemscope itemtype="http://schema.org/Book" class="col-md-11 result">
+              <div class="row">
+<!--                 <div class="col-md-2">
+                                                      
+                      
+                                                    <a href="http://studentdesk.in/Concepts-Of-Physics-By-Hc-Verma--solutions-/1655">
+                            <img itemprop="image" src="http://books.google.co.in/books/content?id=BvVfBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Concepts Of Physics By Hc Verma -solutions  book on sell at just Rs.350-Author- HC Verma " height="150px" width="350px" class="img-responsive mtopfive" >
+                          </a>
+                                                                                  </div>
+ -->                
+ 				<div class="col-md-10 product_results">
+                  <div class="row">      
+                        <div class="col-md-7">                  
+                              <h1  itemprop="name">
+                                <a href="http://studentdesk.in/Concepts-Of-Physics-By-Hc-Verma--solutions-/1655">
+                                  <b class="defaultcolor"> Concepts Of Physics By Hc Verma -solutions  </b>
+                                </a>
+                              </h1>
+                        </div>                        
+                        <div class="col-md-5">
+                          <b itemprop="price" class="price">
+                                                         &nbsp; <span class="priceline mrp_font">MRP: <i class="fa fa-rupee"></i> 536</span> 
+                                                         
+                            <span class="defaultcolor">
+                            Price:  <i class="fa fa-rupee"></i> 350                             </span>    
+                          </b>                    
+                        </div>
+                  </div>                 
+                </div>  
+                
+
+                <div class="row">                                        
+                                <div class="col-md-12">
+                <span itemprop="author"><b>Author: </b> HC Verma </span>
+                </div>
+                                                
+                   
+                  <div class="col-md-12">
+                  <b> City: </b>Daman                 </div>
+                  
+              </div>
+                  </div>
+                <div class="row">
+                  <div class="col-md-12">
+
+                                                                      <a href="http://studentdesk.in/concepts-of-physics-by-hc-verma--solutions-/1655" class="btn" style="padding:6px 41px">About Book</a>                      
+                                                               <i id="posted_on" class="pull-right" itemprop="dateCreated">Posted on: 16, Aug</i>
+                 </div>                  
+                </div>                 
+               </div>              
+              </div>
+                    <hr>
+              
+            </div> <!-- itemscope div end -->
+
+
+
+
+
+
+
+
+
+<!-- THIS IS THE CODE -->
+
+
+
+
+
+
+
 
                 <div class="container">
         	<!-- display books -->
@@ -63,7 +203,7 @@
         		<img data-ng-src="data:image/png;base64,{{book.img_data}}" height="150px" width="350px" data-err-src="images/png/avatar.png"/>
 
         	</div>
-        </div>
+        		</div>
 
 
 
