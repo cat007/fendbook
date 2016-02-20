@@ -1,4 +1,6 @@
-app.controller('sellerHomeCtrl',function($scope,$location,loginService,multiPartForm,bookService){
+<script src="successfulUploadCtrl.js"> </script>
+
+app.controller('sellerHomeCtrl',function($scope,$location,$rootScope,loginService,multiPartForm,bookService){
 
 	locationsList = {};
 	locationsList['Bangalore'] = ['Koramangala','Indiranagar','Domlur','Bellandur'];
@@ -51,6 +53,7 @@ app.controller('sellerHomeCtrl',function($scope,$location,loginService,multiPart
 	},
 
 	$scope.addBook = function(book){
+		<script src="successfulUploadCtrl.js"> </script>
 
 $scope.book['user_id'] = loginService.getSessionId();
 
@@ -61,28 +64,39 @@ $scope.book['user_id'] = loginService.getSessionId();
 		console.log(book);
 		console.log($scope.book);
 
-  multiPartForm.postForm(uploadUrl,$scope.book);
+  multiPartForm.postForm(uploadUrl,$scope.book).then(function(response){
 
-	}
+  				console.log("book upload response = ");
+  				var data = response.data;
+			if(response.status == 201){
+				bookService.setUploadedBook(data);
+				$location.path('/successUpload');
 
-	$scope.getBook = function(){
-		console.log("R we here");
-		var user_id = loginService.getSessionId();
 
-		bookService.getAllBooksForUserId(user_id,$scope).then(function(response){
-			console.log("COOL the things changed 1");
+
+			}
 			console.log(response);
-			$scope.resBooks = response.data;
-			console.log("COOL the things changed");
-			console.log($scope.resBooks);
-			// $location.path("/viewuploadedBook");
 
 
-		});
-
-
+  });
 
 	}
+
+	// $scope.getBook = function(){
+	// 	console.log("R we here");
+	// 	var user_id = loginService.getSessionId();
+
+	// 	bookService.getAllBooksForUserId(user_id,$scope).then(function(response){
+	// 		console.log("COOL the things changed 1");
+	// 		console.log(response);
+	// 		 $scope.resBooks = response.data;
+ //             console.log("COOL the things changed");
+ //             console.log($scope.resBooks);
+	// 		// $location.path("/viewuploadedBook");
+
+
+	// 	});
+	// }
 
 
 

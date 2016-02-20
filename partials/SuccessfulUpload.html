@@ -1,4 +1,4 @@
-		<div ng-controller="sellerHomeCtrl">  
+		<div ng-controller="successfulUploadCtrl">  
 <style type="text/css">.col-lg-123{width:40.33333333%;height:60%}
 </style>
 
@@ -84,14 +84,13 @@
         <!-- MY LIST ELEMENT -->
 
 
-        	<div ng-repeat="book in resBooks">
 
 
-         <div  itemscope class="col-md-11 result">
+         <div  itemscope class="col-md-11 result" ng-init="book = finalBook">
               <div class="row">
               	                <div class="col-md-2">
               	                	<!-- PUT THE IMAGE HERE -->
-                	        		<img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="250px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive"/>
+                	        		<img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="300px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive"/>
               	                </div>
 
               	                <div class="col-md-10">
@@ -127,7 +126,6 @@
           </div>
           <hr>
 
-      </div>
 
 
      
