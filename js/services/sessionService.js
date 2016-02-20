@@ -1,4 +1,4 @@
-app.factory('sessionService',['$http',function($http){
+app.factory('sessionService',['$http',function($http,$location){
 	return{
 		set: function(key,value){
 			return sessionStorage.setItem(key,value);

@@ -91,20 +91,33 @@
               <div class="row">
               	                <div class="col-md-2">
               	                	<!-- PUT THE IMAGE HERE -->
-                	        		<img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="150px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive"/>
+                	        		<img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="250px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive"/>
               	                </div>
 
-              	                <div class="col-md-10 product_results">
+              	                <div class="col-md-10">
               	                	<div class="row">     
-										<div class="col-md-7">                  
-											<h1  itemprop="name">
-											<b class="defaultcolor"> {{book.}}  </b>
-											</a>
-											</h1>
-										</div>                        
- 
-
+											<b class="defaultcolor"> <p style="font-size:30px"> {{book.title}} </p>  </b>
               	                	</div>
+              	                	<br/>
+              	                	
+              	                	<div class="row"><p ng-show="book.edition != null" style="font-size:20px"> Edition : {{book.edition}} </p></div>
+
+              	                	<div class="row"><p ng-show="book.category != null" style="font-size:20px"> Category : {{book.category}} </p></div>
+              	                	
+              	                	<div class="row"><p ng-show="book.author != null" style="font-size:20px"> Author : {{book.author}} </p></div>
+
+              	                	<div class="row"><p ng-show="book.type != null" style="font-size:20px"> Type : {{book.type}} </p></div>
+              	                	
+
+              	                	<div class="row"><p ng-show="book.city != null" style="font-size:20px"> City : {{book.city}} </p></div>
+              	                	<div class="row"><p ng-show="book.location != null" style="font-size:20px"> Location : {{book.location}} </p></div>
+              	                	<div class="row"><p ng-show="book.institute != null" style="font-size:20px"> Institute : {{book.institute}} </p></div>
+              	                	<div class="row"><p ng-show="book.post_for != null" style="font-size:20px"> Post for : {{book.post_for}} </p></div>
+
+              	                	<div class="row"><p ng-show="book.description != null" style="font-size:20px"> Description : {{book.description}} </p></div>
+
+              	                	<div class="row"><p ng-show="book.special_note != null" style="font-size:20px"> Special Note : {{book.special_note}} </p></div>
+
               	                </div>
 
 
@@ -112,6 +125,7 @@
 
               </div>
           </div>
+          <hr>
 
       </div>
 
@@ -122,16 +136,8 @@
 
 
 
-          <div  itemscope itemtype="http://schema.org/Book" class="col-md-11 result">
+<!--           <div  itemscope itemtype="http://schema.org/Book" class="col-md-11 result">
               <div class="row">
-<!--                 <div class="col-md-2">
-                                                      
-                      
-                                                    <a href="http://studentdesk.in/Concepts-Of-Physics-By-Hc-Verma--solutions-/1655">
-                            <img itemprop="image" src="http://books.google.co.in/books/content?id=BvVfBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="Concepts Of Physics By Hc Verma -solutions  book on sell at just Rs.350-Author- HC Verma " height="150px" width="350px" class="img-responsive mtopfive" >
-                          </a>
-                                                                                  </div>
- -->                
  				<div class="col-md-10 product_results">
                   <div class="row">      
                         <div class="col-md-7">                  
@@ -176,7 +182,7 @@
                     <hr>
               
             </div> <!-- itemscope div end -->
-
+ 
 
 
 
@@ -186,30 +192,6 @@
 
 
 <!-- THIS IS THE CODE -->
-
-
-
-
-
-
-
-
-                <div class="container">
-        	<!-- display books -->
-        	<div ng-repeat="book in resBooks">
-
-        		<!-- {{resBooks}} -->
-
-        		<img data-ng-src="data:image/png;base64,{{book.img_data}}" height="150px" width="350px" data-err-src="images/png/avatar.png"/>
-
-        	</div>
-        		</div>
-
-
-
-
-
-
 
 
 </div>

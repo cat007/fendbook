@@ -14,7 +14,7 @@ app.factory('loginService',function($http,$location,sessionService){
 				var res = response.data;
 				console.log(res);
 
-				if(res.active){
+				if(res.active != null){
 					console.log("response = COOLS");
 					sessionService.set('user',res.id);
 					$location.path('/sellerHome');

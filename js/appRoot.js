@@ -14,7 +14,7 @@ app.config(function ($routeProvider) {
 //REMOVE ACCESS TO SELLER HOME PAGE WITHOUT SIGNIN/AUTHENTICATION
  
 app.run(function($rootScope, $location, loginService) {
-    var routeThatRequiresPermission = ['/sellerHome'];
+    var routeThatRequiresPermission = ['/sellerHome','/successUpload','/viewuploadedBook'];
     console.log("CHECK IT OUT");
     $rootScope.$on('$routeChangeStart',function(){
         console.log("$location.path()");
