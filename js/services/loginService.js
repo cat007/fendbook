@@ -1,4 +1,4 @@
-app.factory('loginService',function($http,$location,sessionService,configService){
+app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessionService,configService){
 
 	return {
 		login:function(data,scope){
@@ -25,6 +25,14 @@ app.factory('loginService',function($http,$location,sessionService,configService
 						if(response.status == 201){
 							console.log('status : ' + response.data);	
 							alert("Login Successfully...!!!");
+
+							//setting data into cookies
+							$cookies.put('user',response.data.user_id);
+							$cookieStore.put('token',response.data.session_token);
+
+							console.log('user id : ' + $cookies.get('user'));
+							console.log('token : ' + $cookieStore.get('token'));
+
 							$location.path('/sellerHome');
 						}else if (response.status == 422) {
 							alert("User is already logged in")
@@ -36,21 +44,27 @@ app.factory('loginService',function($http,$location,sessionService,configService
 				}
 				else{
 					alert("Incorrect Username and Password, Please try again!!!");
-					scope.msgtxt = 'incorrect information';
+					$scope.msgtxt = 'incorrect information';
 					$location.path('/signin');
 				}
 			});
 		},
 
 		logout:function(){
-			console.log("WE ARE LOGGIN OUT");
-			sessionService.destroy('user');
+			console.log("Logging out");
+			$cookies.remove('user');
+			$cookieStore.remove('token');
 			$location.path('/home');
 		},
 
 		isLogged:function(){
-			console.log("Is he logged in");
-			if(sessionService.get('user')) return true;
+
+			console.log('check undefined : ' + angular.isUndefinedOrNull($cookies.get('user')));
+			if(angular.isUndefinedOrNull($cookies.get('user'))) {
+				return false;
+			}else {
+				return true;
+			}
 		},
 
 		getSessionId:function(){
@@ -88,6 +102,10 @@ app.factory('loginService',function($http,$location,sessionService,configService
 						
 						if(response.status == 201){
 								sessionService.set('user',response.data.id);
+
+								$cookies.put('user',response.data.user_id);
+								$cookieStore.put('token',response.data.session_token);
+
 								alert("Register Successfully...!!!");
 								console.log("i am signin");
 								$location.path('/sellerHome');

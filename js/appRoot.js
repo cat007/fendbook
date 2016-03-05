@@ -1,4 +1,4 @@
-var app = angular.module('bookapp', ['ngRoute']);
+var app = angular.module('bookapp', ['ngRoute','ngCookies']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
