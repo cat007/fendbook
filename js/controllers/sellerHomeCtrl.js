@@ -1,5 +1,3 @@
-<script src="successfulUploadCtrl.js"> </script>
-
 app.controller('sellerHomeCtrl',function($scope,$location,$rootScope,loginService,multiPartForm,bookService){
 
 	locationsList = {};
@@ -53,7 +51,6 @@ app.controller('sellerHomeCtrl',function($scope,$location,$rootScope,loginServic
 	},
 
 	$scope.addBook = function(book){
-		<script src="successfulUploadCtrl.js"> </script>
 
 $scope.book['user_id'] = loginService.getSessionId();
 
