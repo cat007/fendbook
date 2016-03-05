@@ -3,7 +3,7 @@ app.factory('bookService',function($http,$location){
 	return {
 		getAllBooksForUserId:function(user_id,scope){
 
-		return $http.get('http://localhost:3000/api/books?user_id=1');
+		return $http.get('http://localhost:3000/api/books?user_id='+user_id);
 		},
 		setUploadedBook:function(book){
 			res['upload_book'] = book;
@@ -11,6 +11,9 @@ app.factory('bookService',function($http,$location){
 		},
 		getUploadedBook:function(){
 			return res['upload_book'];
+		},
+		markBookAsSold:function(book_id){
+			return $http.delete('http://localhost:3000/api/books/'+book_id);
 		}
 
 
