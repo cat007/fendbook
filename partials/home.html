@@ -132,22 +132,23 @@
 									<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
-								      		<input type="email" name="input" class="form-control"  placeholder="somebody@example.com" ng-model="email" required>
+								      		<input type="email" name="input" class="form-control"  placeholder="somebody@example.com" ng-model="login_email" required>
 								    	</div>
 								    	<span class="help-block has-error error" id="login-email-error" ng-show="loginForm.input.$error.email">Not a valid email</span>
 								  	</div>
 								  	<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-								      		<input type="password" class="form-control" id="login_password" placeholder="Password">
+								      		<input type="password" name="input" class="form-control" placeholder="Password" 
+								      		ng-model="login_password">
 								    	</div>
 								    	<span class="help-block has-error" id="login-password-error"></span>
 								  	</div>
 								  	<div class="checkbox">
-                            			<span class="character-checkbox" name="login_checkbox" onclick="showPassword()"></span>
+                            			<span class="character-checkbox" name="login_checkbox" ng-click="showPassword()"></span>
                             			<span class="label">Show password</span>
                         			</div>
-						  			<button type="button" id="login_btn" class="btn btn-block bt-login center-block" data-loading-text="Signing In...." ng-click="submit()" data-dismiss="modal">Login</button>
+						  			<button type="button" id="login_btn" class="btn btn-block bt-login center-block" data-loading-text="Signing In...." ng-click="login()" data-dismiss="modal">Login</button>
 						  			<div class="clearfix"></div>
 						  			
 						  			<div class="login-modal-footer">
@@ -159,7 +160,7 @@
 											
 											<div class="col-xs-4 col-sm-4 col-md-4 pull-right">
 												<i class="glyphicon glyphicon-ok"></i>
-												<a href = "#signup" data-toggle = "modal" data-dismiss="modal" class="signup-tab"> Sign Up </a>
+												<a href = "#signup" data-toggle = "modal" data-dismiss="modal" class="signup-tab" ng-click="clearOnSignupClick()"> Sign Up </a>
 											</div>
 										</div>
 										
@@ -222,7 +223,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i>@</i></div>
-							<input type="email" name="input" class="form-control" id="signup_email" placeholder="Enter Your Mail Id" ng-model="emailId" required>
+							<input type="email" name="input" class="form-control" id="signup_email" placeholder="Enter Your Mail Id" ng-model="reg_email" required>
 						</div>
 						<span class="help-block has-error error" id="signup_email_error" ng-show="signupform.input.$error.email">Not a valid email</span>
 					</div>  
@@ -230,7 +231,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></div>
-							<input type="text" class="form-control" id="signup_contact" placeholder="Contact">
+							<input type="text" class="form-control" id="signup_contact" ng-model="reg_contact" placeholder="Contact">
 						</div>
 						<span class="help-block has-error" id="email-error"></span>
 					</div>
@@ -238,7 +239,7 @@
 					<div class="form-group">	
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-							<input type="text" class="form-control" id="signup_password" placeholder="Password">
+							<input type="text" class="form-control" id="signup_password" ng-model="reg_password" placeholder="Password">
 						</div>
 						<span class="help-block has-error" id="email-error"></span>
 					</div>
@@ -246,17 +247,17 @@
 					<div class="form-group">			
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-							<input type="text" class="form-control" id="signup_reenter_password" placeholder="Renter Password">
+							<input type="text" class="form-control" ng-model="reg_repassword" id="signup_reenter_password" placeholder="Renter Password">
 						</div>
 						<span class="help-block has-error" id="email-error"></span>
 					</div>
 						
 					<div class="checkbox">
-                    	<span class="character-checkbox" name="signup_checkbox" onclick="showPassword()"></span>
+                    	<span class="character-checkbox" name="signup_checkbox" ng-click="showPassword()"></span>
                     	<span class="label">Show password</span>
                     </div>
 
-                    <button type="button" id="signup_btn" class="btn btn-block bt-signup pull-right" data-loading-text="Singing Up....">Submit
+                    <button type="button" id="signup_btn" class="btn btn-block bt-signup pull-right" data-loading-text="Singing Up...." data-dismiss="modal" ng-click="registerUser()">Submit
                     </button>
 					<div class="clearfix"></div>
 

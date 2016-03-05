@@ -1,27 +1,45 @@
 app.controller('loginCtrl',function($scope,$location,loginService){
-    $scope.submit = function(){
-        var emailId = $scope.emailId;
-        var password = $scope.password;
+    
+    $scope.Math = window.Math;
+
+    $scope.login = function(){
+        var emailId = $scope.login_email;
+        var password = $scope.login_password;
         var data = new Data(emailId,password);
         loginService.login(data,$scope);
+    }
 
-        console.log("Whats happening here 123");
-        // if($scope.emailId == 'admin@gmail.com' && $scope.password == 'admin' ){
-            // $location.path('/sellerHome');
-        // }
+    $scope.registerUser = function(){
+        var emailId = $scope.reg_email;
+        var password = $scope.reg_password;
+        loginService.registerUsers($scope);
+    }
 
+    $scope.clearOnSignupClick = function(){
+        $scope.login_email = null;
+        $scope.login_password = null;
+    }
 
+    $scope.showPassword = function(){
+        var key_attr = $('#key').attr('type');
+    
+        if(key_attr != 'text') {
+            $('.checkbox').addClass('show');
+            $('#key').attr('type', 'text');
+        
+        } else {
+            $('.checkbox').removeClass('show');
+            $('#key').attr('type', 'password');
+        
+        }
     }
 
 });
 
 function Data(user, password){
-
-   // Add object properties like this
-           this.user = user;
-        this.password = password;
-        return this;
-
+    this.user = user;
+    this.password = password;
+    return this;
 }
 
 function validateemail(email) {  
