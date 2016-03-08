@@ -1,0 +1,18 @@
+b{color:#4C5353}.product_results{margin-top:8px}.product_results u{color:#4C5353}.product_results
+.defaultcolor{color:#3c763d;}
+.my_background_color {
+	background-image: url(../images/images.jpg);
+/* Customise it accordingly */
+  white-space: nowrap;
+  overflow: hidden;
+  overflow: ellipsis;
+  max-width: 83%;
+  border-color: darkcyan;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.facebook_button {
+padding-left: 17%;
+}
+

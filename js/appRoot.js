@@ -7,6 +7,7 @@ app.config(function ($routeProvider) {
         .when('/sellerHome', { templateUrl: 'partials/sellerHome.html', controller: 'sellerHomeCtrl'})
         .when('/successUpload', { templateUrl: 'partials/SuccessfulUpload.html', controller: 'successfulUploadCtrl'})
         .when('/viewuploadedBook', { templateUrl: 'partials/ViewUploadedBook.html', controller: 'sellerHomeCtrl'})
+        .when('/manageBooks', { templateUrl: 'partials/ManageBooks.html', controller: 'manageBookCtrl'})
         
         
         .otherwise({ redirectTo: '/home', templateUrl : 'partials/home.html'});
@@ -15,7 +16,7 @@ app.config(function ($routeProvider) {
 //REMOVE ACCESS TO SELLER HOME PAGE WITHOUT SIGNIN/AUTHENTICATION
  
 app.run(function($rootScope, $location, loginService) {
-    var routeThatRequiresPermission = ['/sellerHome','/successUpload','/viewuploadedBook'];
+    var routeThatRequiresPermission = ['/sellerHome','/successUpload','/viewuploadedBook','/manageBooks'];
     console.log("CHECK IT OUT");
     $rootScope.$on('$routeChangeStart',function(){
         console.log("$location.path()");
