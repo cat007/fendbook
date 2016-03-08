@@ -34,6 +34,18 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         }
     }
 
+    $scope.moveToSellerHome = function(){
+        $location.path('/sellerHome');
+    }
+
+    $scope.isLogin = function(){
+        if(loginService.isLogged()){
+            return true;
+        }else{
+            return false;
+        }
+    }   
+
 });
 
 function Data(user, password){
