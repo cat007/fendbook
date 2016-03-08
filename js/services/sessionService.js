@@ -1,4 +1,5 @@
-app.factory('sessionService',['$http','configService',function($http,configService){
+app.factory('sessionService',['$http','$q','configService',function($http,$q,configService){
+	// var deferred = $q.defer();
 	return{
 		set: function(key,value){
 			return sessionStorage.setItem(key,value);
@@ -12,17 +13,34 @@ app.factory('sessionService',['$http','configService',function($http,configServi
 		},
 
 		get: function(key){
-						console.log('sessionStorage = ');
+			console.log('sessionStorage = ');
 			console.log(sessionStorage);
-
-
 			return sessionStorage.getItem(key);
+		},
+
+		getSessionDetails: function(key){
+			var deferred = $q.defer();
+			return $http.get(configService.getRestUrl() + '/sessions?user_id=' + key).then(function(response){
+					console.log('Response : ' + response.data.session_token);
+					deferred.resolve(response.data);
+					return deferred.promise;
+				}, function(response){
+					deferred.reject(response);
+        			return deferred.promise;
+				});
 		},
 
 		destroy: function(key){
 			console.log('sessionStorage = ');
 			console.log(sessionStorage);
 			return sessionStorage.removeItem(key);
+		},
+
+		deleteSession: function(sessionToken){
+			return $http.post(configService.getRestUrl() + '/sessions/' + sessionToken + '/delete', '',{
+					transformRequest: '',
+					headers: {'Content-type': undefined}
+			});
 		},
 
 		generateSessionToken: function(){

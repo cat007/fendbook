@@ -6,12 +6,6 @@ app.factory('configService',function(){
   	REST_URL: 'http://localhost:3000/api'
 }
 
-// 	return {
-// 		getRestUrl:function() {
-// 		return configDetails.REST_URL;
-// 	}
-// }
-
 	var configFactory = {};
 
 	configFactory.getRestUrl = function() {

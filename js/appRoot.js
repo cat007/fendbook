@@ -23,7 +23,6 @@ app.run(function($rootScope, $location, loginService) {
         if(routeThatRequiresPermission.indexOf($location.path()) != -1 && !loginService.isLogged()){
             console.log("LETS CHECK THIS");
             $location.path("/login");
-
         }
     })
 });

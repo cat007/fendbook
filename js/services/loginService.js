@@ -52,18 +52,49 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 
 		logout:function(){
 			console.log("Logging out");
-			$cookies.remove('user');
-			$cookieStore.remove('token');
-			$location.path('/home');
+			sessionService.deleteSession($cookieStore.get('token')).then(function(response){
+				if (response.status == 200) {
+					alert("Logged Out");
+					$cookies.remove('user');
+					$cookieStore.remove('token');
+					$location.path('/home');
+				}else{
+					$location.path('/sellerHome');
+					alert("Network Error...Please try again");	
+				}
+			});
 		},
 
 		isLogged:function(){
-
-			console.log('check undefined : ' + angular.isUndefinedOrNull($cookies.get('user')));
+			var sessionToken = $cookies.get('token');
 			if(angular.isUndefinedOrNull($cookies.get('user'))) {
 				return false;
 			}else {
-				return true;
+				var request;
+        		if (window.XMLHttpRequest) {
+            		request = new XMLHttpRequest();
+        		} else if (window.ActiveXObject) {
+            		request = new ActiveXObject("Microsoft.XMLHTTP");
+        		} else {
+            		throw new Error("Your browser don't support XMLHttpRequest");
+        		}
+
+        		var url = configService.getRestUrl() + '/sessions?user_id=' + $cookies.get('user');
+        		request.open('GET', url, false);
+        		request.send(null);
+
+        		if (request.status === 200) {
+            		console.log ('response : ' + request.responseText);
+        		}
+
+        		var jsonResponse = JSON.parse(request.responseText);
+        		console.log('token : ' + jsonResponse["session_token"]);
+        		console.log('condition : ' + sessionToken, angular.toJson(jsonResponse["session_token"]));
+        		if (angular.equals(sessionToken, angular.toJson(jsonResponse["session_token"]))){
+						console.log("here");
+						return true;
+					}	
+        		return false;
 			}
 		},
 
