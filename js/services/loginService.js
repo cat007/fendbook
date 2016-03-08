@@ -44,7 +44,6 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 				}
 				else{
 					alert("Incorrect Username and Password, Please try again!!!");
-					$scope.msgtxt = 'incorrect information';
 					$location.path('/signin');
 				}
 			});

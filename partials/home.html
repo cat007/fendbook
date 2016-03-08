@@ -31,12 +31,16 @@
 		</div>
 
 
-
-
-
-
-		<div class="container">
-			<div class="jumbotron" >
+		<div class="container" ng-switch="isLogin()">
+			<div class="jumbotron" ng-switch-when="true">
+				<center>
+				<h1>WELCOME TO BOOK WORLD </h1>
+				<p>Great books help you understand, and they help you feel understood. -- John Green</p>
+				<a class="btn btn-default btn-primary"> BUY NOW ! </a>
+				<a class="btn btn-default btn-primary" ng-click="moveToSellerHome()">SELL NOW ! </a>
+				</center>
+			</div>
+			<div class="jumbotron" ng-switch-when="false">
 				<center>
 				<h1>WELCOME TO BOOK WORLD </h1>
 				<p>Great books help you understand, and they help you feel understood. -- John Green</p>
