@@ -17,6 +17,10 @@ app.factory('bookService',function($http){
 		},
 		getBookForId:function(book_id){
 			return $http.get('http://localhost:3000/api/books/'+book_id);
+		},
+		updateNoOfViews:function(book_id){
+			return $http.post('http://localhost:3000/api/books/'+book_id +'/update_views');
+
 		}
 
 

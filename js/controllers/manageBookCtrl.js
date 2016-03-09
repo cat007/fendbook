@@ -67,7 +67,8 @@ app.controller('manageBookCtrl',function($scope,$cookies,$routeParams,loginServi
 			bookService.getBookForId(id).then(function(response){
 				$scope.book = response.data;
 			});
-			
+			bookService.updateNoOfViews(id);
+
 
 
 		}
