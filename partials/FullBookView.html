@@ -35,20 +35,17 @@
 
 <div ng-show="book != null">
 
-		<div class="col-md-9 ">
+		<div class="col-md-40 ">
 <div class="row my_background_color">
-	<div class="col-md-2">
-		 <img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="300px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive img-thumbnail"/>
-	</div>
+	<div class="col-md-6">
+		 <img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="400px" width="450px" data-err-src="images/png/avatar.png">
+		</div>
 
 
-
-
-
-	<div class="col-md-10 product_results ">
+	<div class="col-md-5 product_results ">
 		<div class="row">
 			<div class="col-md-7 ">
-				<h1> <a href="#" ng-click="">{{book.title}} </a> </h1>
+				<h1> <a href="#">{{book.title}} </a> </h1>
 			</div>
 			<div class="col-md-5">
             <b class="price" itemprop="price">
@@ -79,14 +76,40 @@
 
 					</div>
 					<div class="col-md-12">
+						<b> Edition: </b> {{book.edition}}                
+				   </div>
+				   <div class="col-md-12">
+						<b> Category: </b> {{book.category}}                
+				   </div>
+				   <div class="col-md-12">
+						<b> Selling Type : </b> {{book.post_for}}                
+				   </div>
+					<div class="col-md-12">
 						<b> City: </b> {{book.city}}                
 				   </div>
+				   <div class="col-md-12">
+						<b> Location: </b> {{book.location}}                
+				   </div>
+				   <div class="col-md-12">
+						<b> Institute: </b> {{book.institute}}                
+				   </div>
+				   <div class="col-md-12">
+						<b> Description: </b> {{book.description}}                
+				   </div>
+				   <div class="col-md-12">
+						<b> Special Note: </b> {{book.special_note}}                
+				   </div>
+			</div>
 
-
+			<div> <h2> Total Views : {{45}} </h2>
 
 			</div>
 
 		</div>
+		<br>
+		<br>
+		<br>
+		<br>
 		<div class="row">
 			<div class="col-md-12">
                <div class="col-md-6 facebook_button">
