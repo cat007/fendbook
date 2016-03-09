@@ -14,6 +14,9 @@ app.factory('bookService',function($http){
 		},
 		markBookAsSold:function(book_id){
 			return $http.post('http://localhost:3000/api/books/'+book_id +'/is_sold');
+		},
+		getBookForId:function(book_id){
+			return $http.get('http://localhost:3000/api/books/'+book_id);
 		}
 
 

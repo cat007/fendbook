@@ -1,8 +1,9 @@
-app.controller('manageBookCtrl',function($scope,$cookies,sessionService,bookService){
+app.controller('manageBookCtrl',function($scope,$cookies,$routeParams,loginService,bookService){
 
         var user_id = $cookies.get('user');
         console.log("User id = ");
         console.log(user_id);
+        // $scope.book = null;
 
 
 		bookService.getAllBooksForUserId(user_id,$scope).then(function(response){
@@ -15,6 +16,25 @@ app.controller('manageBookCtrl',function($scope,$cookies,sessionService,bookServ
 
 
 		});
+
+									$scope.$on('$routeChangeSuccess', function() {
+    		// $routeParams should be populated here
+    					// alert($routeParams);
+    		$scope.id = $routeParams.id;
+    		console.log("Param = ");
+			console.log($scope.id);
+			if($scope.id != null){
+			$scope.displayFullBook($scope.id);
+		}
+  		});
+
+
+
+
+			$scope.logout = function(){
+			loginService.logout();
+			},
+
 
 		$scope.markBookSold = function(bookId){
 
@@ -37,7 +57,20 @@ app.controller('manageBookCtrl',function($scope,$cookies,sessionService,bookServ
 			});
 
 
+		},
+
+
+		$scope.displayFullBook = function(id){
+
+
+
+			bookService.getBookForId(id).then(function(response){
+				$scope.book = response.data;
+			});
 		}
+
+
+
 
 
 

@@ -33,12 +33,9 @@
 			</div>
 		</div>
 
+<div ng-show="book != null">
 
-
-
-
-<div ng-repeat="book in resBooks">
-<div class="col-md-9 ">
+		<div class="col-md-9 ">
 <div class="row my_background_color">
 	<div class="col-md-2">
 		 <img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="300px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive img-thumbnail"/>
@@ -51,7 +48,7 @@
 	<div class="col-md-10 product_results ">
 		<div class="row">
 			<div class="col-md-7 ">
-				<h1> <a href="#book/{{book.id}}">{{book.title}} </a> </h1>
+				<h1> <a href="#" ng-click="">{{book.title}} </a> </h1>
 			</div>
 			<div class="col-md-5">
             <b class="price" itemprop="price">
