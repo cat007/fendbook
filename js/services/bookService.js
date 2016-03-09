@@ -1,4 +1,4 @@
-app.factory('bookService',function($http,$location){
+app.factory('bookService',function($http){
 	var res = {};
 	return {
 		getAllBooksForUserId:function(user_id,scope){

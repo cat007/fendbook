@@ -1,4 +1,4 @@
-app.controller('manageBookCtrl',function($scope,$location,$cookies,sessionService,bookService){
+app.controller('manageBookCtrl',function($scope,$cookies,sessionService,bookService){
 
         var user_id = $cookies.get('user');
         console.log("User id = ");
@@ -26,8 +26,6 @@ app.controller('manageBookCtrl',function($scope,$location,$cookies,sessionServic
 						var obj = $scope.resBooks[i];
 						if(obj.id == bookId){
 							$scope.resBooks.splice(i,1);
-							$location.path('/manageBooks');
-							
 						}
 					}
 
@@ -36,10 +34,12 @@ app.controller('manageBookCtrl',function($scope,$location,$cookies,sessionServic
 				}
 
 
-			})
+			});
 
 
 		}
+
+
 
 
 });
