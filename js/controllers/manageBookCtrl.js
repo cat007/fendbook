@@ -1,8 +1,9 @@
-app.controller('manageBookCtrl',function($scope,sessionService,bookService){
+app.controller('manageBookCtrl',function($scope,$location,$cookies,sessionService,bookService){
 
-        var user_id = sessionService.get('user');
+        var user_id = $cookies.get('user');
         console.log("User id = ");
         console.log(user_id);
+
 
 		bookService.getAllBooksForUserId(user_id,$scope).then(function(response){
 			console.log("COOL the things changed 1");
@@ -25,7 +26,8 @@ app.controller('manageBookCtrl',function($scope,sessionService,bookService){
 						var obj = $scope.resBooks[i];
 						if(obj.id == bookId){
 							$scope.resBooks.splice(i,1);
-							break;
+							$location.path('/manageBooks');
+							
 						}
 					}
 

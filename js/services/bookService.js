@@ -13,7 +13,7 @@ app.factory('bookService',function($http,$location){
 			return res['upload_book'];
 		},
 		markBookAsSold:function(book_id){
-			return $http.delete('http://localhost:3000/api/books/'+book_id);
+			return $http.post('http://localhost:3000/api/books/'+book_id +'/is_sold');
 		}
 
 
