@@ -36,7 +36,7 @@
 <div ng-show="book != null">
 
 		<div class="col-md-40 ">
-<div class="row my_background_color">
+<div class="row">
 	<div class="col-md-6">
 		 <img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="500px" width="450px" data-err-src="images/png/avatar.png">
 		</div>
@@ -47,6 +47,12 @@
 			<div class="col-md-7 ">
 				<h1> {{book.title}}</h1>
 			</div>
+			<br>
+			<div class="col-md-10 ">
+				<hr>
+			</div>
+
+			
 			<div class="col-md-5">
             <b class="price" itemprop="price">
             	<div ng-show="book.post_for == 'selling'">
