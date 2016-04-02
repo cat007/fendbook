@@ -138,6 +138,8 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 
 								alert("Register Successfully...!!!");
 								console.log("i am signin");
+								console.log('user : ' + $cookies.get('user'));
+								console.log('token : ' + $cookieStore.get('token'));
 								$location.path('/sellerHome');
 						}
 						 else {
@@ -151,6 +153,25 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 						alert("Network Error...Please try again!!!");		
 					}
 				});
+		    },
+
+		    fbLogin:function(){
+		    	FB.login(function(response) {
+    				if (response.authResponse) {
+	     				console.log('Welcome!  Fetching your information.... ');
+	     				FB.api('/me', function(response) {
+	       					console.log('Good to see you, ' + response.name + '.');
+	       					console.log('response');
+	       					console.log(response);
+
+	       				var accessToken = FB.getAuthResponse();
+	       					console.log('accessToken');
+	       					console.log(accessToken);	
+     					});
+    				} else {
+     					console.log('User cancelled login or did not fully authorize.');
+    				}
+				},{scope: 'email,public_profile'});
 		    }
 	}
 

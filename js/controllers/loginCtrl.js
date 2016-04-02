@@ -34,6 +34,11 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         }
     }
 
+    $scope.fbLogin = function(){
+        loginService.fbLogin();
+        $location.path('/sellerHome');
+    }    
+
     $scope.moveToSellerHome = function(){
         $location.path('/sellerHome');
     }
