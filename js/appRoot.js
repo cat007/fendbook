@@ -8,6 +8,7 @@ app.config(function ($routeProvider) {
         .when('/successUpload', { templateUrl: 'partials/SuccessfulUpload.html', controller: 'successfulUploadCtrl'})
         .when('/manageBooks', { templateUrl: 'partials/ManageBooks.html', controller: 'manageBookCtrl'})
         .when('/book/:id',{templateUrl : 'partials/FullBookView.html', controller: 'manageBookCtrl'})
+        .when('/SideFilter',{templateUrl: 'partials/SideFilter.html',controller: 'customerCtrl'})
         
         
         .otherwise({ redirectTo: '/home', templateUrl : 'partials/home.html'});
