@@ -58,7 +58,7 @@
 <br/> <br/>
  -->
     <label class="col-lg-1 control-label">Image:</label>
-    <input type="file" id="exampleInputFile" file-model="book.file" accept="image/png, image/jpeg, image/jpg" >
+    <input type="file" id="exampleInputFile" file-model="book.file" accept="image/*" >
 
     <div ng-show="book.file != null"> <ul><li>{{book.file.name}}</li></ul></div>
     <br/>
