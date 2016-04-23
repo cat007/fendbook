@@ -87,8 +87,8 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
         		request.send(null);
 
         		// console.log('condition : ' + angular.isNull(request.responseText));
-        		if (request.status === 200 && !angular.isUndefinedOrNull(request.responseText)) {
-            		console.log ('response : ' + request.responseText);
+        		if (request.status === 200) {
+            		// console.log ('response : ' + request.responseText);
         		
 
         		var jsonResponse = JSON.parse(request.responseText);
