@@ -54,6 +54,10 @@ app.controller('sellerHomeCtrl',function($scope,$location,$rootScope,loginServic
 
 $scope.book['user_id'] = loginService.getSessionId();
 
+if($scope.book.file instanceof Array){
+	$scope.book.file =  $scope.book.file[0];
+}
+
 //Upload image here
 
   var uploadUrl = '/Users/luv.saxena/new_image';

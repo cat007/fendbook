@@ -1,0 +1,302 @@
+<div ng-controller="customerCtrl">
+   <style type="text/css">.col-lg-123{width:8.33333333%;height:30px}</style>
+   <!-- Header Start--> 
+   <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+         <div class="navbar-left">
+            <img src="Content/Images/rsz_books.png" alt="logo"> Book Store 
+         </div>
+         <!--           <a href="#" class="navbar-brand"> 
+            Book Store
+            </a>
+            -->
+         <button class="navbar-toggle" data-toggle="collapse" data-target = ".navbarHeaderCollapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <div class="collapse navbar-collapse navbarHeaderCollapse">
+            <ul class = "nav navbar-nav navbar-right">
+               <li><a href="#">Home</a></li>
+               <li class="active"><a>Upload</a></li>
+               <li><a href="#manageBooks">My Books</a></li>
+               <li><a href="#">Social Media</a></li>
+               <li><a href="#">Our Vision</a></li>
+               <li><a href="#">About Us</a></li>
+               <li><a href="#">Contact Us</a></li>
+               <li><a href="#" ng-click = "logout()">Log Out</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+   <!-- Header ENd--> 
+   <!-- Filter Start -->
+   <div class="col-md-3 class-A">
+      <div class="row Row-1">
+         <div class="col-md-12"> 
+            Looking For : 
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="bookvalue" ng-change="bookCheckBox()" ng-true-value=true ng-false-value=false>
+               Book
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="Magzinevalue" ng-change="MagzineCheckBox()" ng-true-value=true ng-false-value=false >
+               Magzine 
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="StudyMaterialvalue" ng-change="StudyMaterialCheckBox()" ng-true-value=true ng-false-value=false >
+               Study-Material
+               </label>
+            </div>
+         </div>
+      </div>
+      <div class="row Row-1">
+         <div class="col-md-12"> 
+            Posted For : 
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="Sellvalue" ng-change="SellCheckBox()" ng-true-value=true ng-false-value=false >
+               Sell
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="Rentvalue" ng-change="RentCheckBox()" ng-true-value=true ng-false-value=false >
+               Rent 
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="Exchangevalue" ng-change="ExchangeCheckBox()" ng-true-value=true ng-false-value=false >
+               Exchange
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="Donatevalue" ng-change="DonateCheckBox()" ng-true-value=true ng-false-value=false >
+               Donate
+               </label>
+            </div>
+         </div>
+      </div>
+      <div class="row Row-1 category_scroll">
+         <div class="col-md-12"> 
+            Filter By Category : 
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C1value" ng-change="C1CheckBox()" ng-true-value=true ng-false-value=false>
+               Computers & Technology
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C2value" ng-change="C2CheckBox()" ng-true-value=true ng-false-value=false>
+               Business & Management 
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C3value" ng-change="C3CheckBox()" ng-true-value=true ng-false-value=false>
+               Accounting & Taxation
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C4value" ng-change="C4CheckBox()" ng-true-value=true ng-false-value=false>
+               Laws & Regulations
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C5value" ng-change="C5CheckBox()" ng-true-value=true ng-false-value=false>
+               Entrance Exams 
+               </label>=
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C6value" ng-change="C6CheckBox()" ng-true-value=true ng-false-value=false>
+               School Books
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C7value" ng-change="C7CheckBox()" ng-true-value=true ng-false-value=false>
+               Design, Arts & Photography
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C8value" ng-change="C8CheckBox()" ng-true-value=true ng-false-value=false>
+               Biographies & Autobiographies
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C9value" ng-change="C9CheckBox()" ng-true-value=true ng-false-value=false>
+               Romance & Short Stories
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C10value" ng-change="C10CheckBox()" ng-true-value=true ng-false-value=false>
+               Sports & Outdoors 
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C11value" ng-change="C11CheckBox()" ng-true-value=true ng-false-value=false>
+               Music, Films & Entertainment
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C12value" ng-change="C12CheckBox()" ng-true-value=true ng-false-value=false>
+               Religion & Spirituality
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C13value" ng-change="C13CheckBox()" ng-true-value=true ng-false-value=false>
+               History & Politics
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C14value" ng-change="C14CheckBox()" ng-true-value=true ng-false-value=false>
+               Sports & Outdoors 
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C15value" ng-change="C15CheckBox()" ng-true-value=true ng-false-value=false>
+               Mystery, Thriller & Suspence
+               </label>
+            </div>
+         </div>
+         <div class="col-md-12">
+            <div class="checkbox">
+               <label>
+               <input  type="checkbox" ng-model="C16value" ng-change="C16CheckBox()" ng-true-value=true ng-false-value=false>
+               Skills, Dictionary, Learning
+               </label>
+            </div>
+         </div>
+      </div>
+      <!-- Fileter End -->
+   </div>
+   <!-- ADS --> 
+
+   <!-- Looping -->
+   <div ng-repeat="book in resBooks">
+   <div class="col-md-9 ">
+      <div class="row my_background_color">
+         <div class="col-md-2">
+            <img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="300px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive img-thumbnail"/>
+         </div>
+         <div class="col-md-10 product_results ">
+            <div class="row">
+               <div class="col-md-7 ">
+                  <h1> <a href="#book/{{book.id}}">{{book.title}} </a> </h1>
+               </div>
+               <div class="col-md-5">
+                  <b class="price" itemprop="price">
+                     <div ng-show="book.post_for == 'selling'">
+                        <span class="priceline mrp_font">
+                        MRP:
+                        <i class="fa fa-rupee"></i>
+                        666
+                        </span>
+                        <span class="defaultcolor">
+                        Price:
+                        <i class="fa fa-rupee"></i>
+                        350
+                        </span>
+                     </div>
+                     <div ng-show="book.post_for == 'donation'">
+                        BOOK FOR DONATION
+                     </div>
+                  </b>
+               </div>
+            </div>
+            <div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <span itemprop="author"><b>Author: </b>{{book.author}}</span>
+                  </div>
+                  <div class="col-md-12">
+                     <b> City: </b> {{book.city}}                
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="col-md-6 facebook_button">
+                     <button type="button" class="btn btn-primary" ng-click="markBookSold(book.id)">Mark Sold</button>
+                  </div>
+                  <div class="col-md-6 facebook_button">
+                     <!-- Facebook -->
+                     <button type="button" class="btn btn-primary">Share on Facebook</button>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <br>
+            </div>
+         </div>
+      </div>
+      <hr>
+      </hr>
+   </div>
+</div>
+   <!-- End Looping -->
+</div>

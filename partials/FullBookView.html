@@ -22,7 +22,7 @@
 					<ul class = "nav navbar-nav navbar-right">
 
 						<li><a href="#">Home</a></li>
-						<li class="active"><a href="#manageBooks">My Books</a></li>
+						<li><a href="#manageBooks">My Books</a></li>
 						<li><a href="#">Social Media</a></li>
 						<li><a href="#">Our Vision</a></li>
 						<li><a href="#">About Us</a></li>
@@ -33,26 +33,26 @@
 			</div>
 		</div>
 
+<div ng-show="book != null">
+
+		<div class="col-md-40 ">
+<div class="row">
+	<div class="col-md-6">
+		 <img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="500px" width="450px" data-err-src="images/png/avatar.png">
+		</div>
 
 
-
-
-<div ng-repeat="book in resBooks">
-<div class="col-md-9 ">
-<div class="row my_background_color">
-	<div class="col-md-2">
-		 <img itemprop="image" data-ng-src="data:image/png;base64,{{book.img_data}}" height="300px" width="350px" data-err-src="images/png/avatar.png" class="img-responsive img-thumbnail"/>
-	</div>
-
-
-
-
-
-	<div class="col-md-10 product_results ">
+	<div class="col-md-5 product_results ">
 		<div class="row">
 			<div class="col-md-7 ">
-				<h1> <a href="#book/{{book.id}}">{{book.title}} </a> </h1>
+				<h1> {{book.title}}</h1>
 			</div>
+			<br>
+			<div class="col-md-10 ">
+				<hr>
+			</div>
+
+			
 			<div class="col-md-5">
             <b class="price" itemprop="price">
             	<div ng-show="book.post_for == 'selling'">
@@ -78,22 +78,48 @@
 		<div>
 			<div class="row">
 					<div class="col-md-12">
-						<span itemprop="author"><b>Author: </b>{{book.author}}</span>
+						<span itemprop="author"><h4><b>Author: </b>{{book.author}}</span></h4>
 
 					</div>
 					<div class="col-md-12">
-						<b> City: </b> {{book.city}}                
+						<h4><b> Edition: </b> {{book.edition}} </h4>                
 				   </div>
+				   <div class="col-md-12">
+						<h4><b> Category: </b> {{book.category}}</h4>                
+				   </div>
+				   <div class="col-md-12">
+						<h4><b> Selling Type : </b> {{book.post_for}}</h4>                
+				   </div>
+					<div class="col-md-12">
+						<h4><b> City: </b> {{book.city}}</h4>                
+				   </div>
+				   <div class="col-md-12">
+						<h4><b> Location: </b> {{book.location}}</h4>                
+				   </div>
+				   <div class="col-md-12">
+						<h4><b> Institute: </b> {{book.institute}}</h4>                
+				   </div>
+				   <div class="col-md-12">
+						<h4><b> Description: </b> {{book.description}}</h4>                
+				   </div>
+				   <div class="col-md-12">
+						<h4><b> Special Note: </b> {{book.special_note}}</h4>                
+				   </div>
+			</div>
 
-
+			<div> <h2> Total Views : {{book.views}} </h2>
 
 			</div>
 
 		</div>
+		<br>
+		<br>
+		<br>
+		<br>
 		<div class="row">
 			<div class="col-md-12">
                <div class="col-md-6 facebook_button">
-					 <button type="button" class="btn btn-primary" ng-click="markBookSold(book.id)">Mark Sold</button>
+			<button type="button" class="btn btn-primary" ng-click="markBookSold(book.id)"> <a style="color:#FFFFFF" href="#manageBooks"> Mark Sold </a> </button>
 				</div>
 				<div class="col-md-6 facebook_button">					 <!-- Facebook -->
                   <button type="button" class="btn btn-primary">Share on Facebook</button>

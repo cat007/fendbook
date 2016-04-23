@@ -6,8 +6,9 @@ app.config(function ($routeProvider) {
         .when('/home', { templateUrl: 'partials/home.html', controller: 'loginCtrl'})
         .when('/sellerHome', { templateUrl: 'partials/sellerHome.html', controller: 'sellerHomeCtrl'})
         .when('/successUpload', { templateUrl: 'partials/SuccessfulUpload.html', controller: 'successfulUploadCtrl'})
-        .when('/viewuploadedBook', { templateUrl: 'partials/ViewUploadedBook.html', controller: 'sellerHomeCtrl'})
         .when('/manageBooks', { templateUrl: 'partials/ManageBooks.html', controller: 'manageBookCtrl'})
+        .when('/book/:id',{templateUrl : 'partials/FullBookView.html', controller: 'manageBookCtrl'})
+        .when('/SideFilter',{templateUrl: 'partials/SideFilter.html',controller: 'customerCtrl'})
         
         
         .otherwise({ redirectTo: '/home', templateUrl : 'partials/home.html'});
