@@ -36,8 +36,12 @@ app.controller('loginCtrl',function($scope,$location,loginService){
 
     $scope.fbLogin = function(){
         loginService.fbLogin();
-        $location.path('/sellerHome');
-    }    
+        // $location.path('/sellerHome');
+    } 
+
+    $scope.resetMailId = function(){
+        loginService.deleteUser();
+    }   
 
     $scope.moveToSellerHome = function(){
         $location.path('/sellerHome');
@@ -55,7 +59,7 @@ app.controller('loginCtrl',function($scope,$location,loginService){
 
 function Data(user, password){
     this.user = user;
-    this.password = password;
+    this.password = password;    
     return this;
 }
 

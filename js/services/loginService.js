@@ -6,10 +6,10 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 			$http.get(configService.getRestUrl() + '/users?email=' + data.user + '&password=' + data.password).then(function(response){
 
 				if(response.data != null){
-					console.log("response = " + response.data);
+					// console.log("response = " + response.data);
 					var loginResponse = response.data;
-					console.log(loginResponse);
-					console.log("User Name : " + loginResponse.first_name + ' ' + loginResponse.last_name);
+					// console.log(loginResponse);
+					// console.log("User Name : " + loginResponse.first_name + ' ' + loginResponse.last_name);
 					sessionService.set('user',loginResponse.id);
 
 					/*
@@ -18,20 +18,21 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 					var sessionRequest = new FormData();
 					sessionRequest.append('user_id', loginResponse.id);
 					sessionRequest.append('session_token', sessionService.generateSessionToken());
-					sessionRequest.append('email', loginResponse.email);	
-					console.log('sessionRequest : '+sessionRequest);	
+					sessionRequest.append('email', loginResponse.email);
+					sessionRequest.append('is_fb_user', false);		
+					// console.log('sessionRequest : '+sessionRequest);	
 
 					sessionService.createSession(sessionRequest).then(function(response){
 						if(response.status == 201){
-							console.log('status : ' + response.data);	
+							// console.log('status : ' + response.data);	
 							alert("Login Successfully...!!!");
 
 							//setting data into cookies
 							$cookies.put('user',response.data.user_id);
 							$cookieStore.put('token',response.data.session_token);
 
-							console.log('user id : ' + $cookies.get('user'));
-							console.log('token : ' + $cookieStore.get('token'));
+							// console.log('user id : ' + $cookies.get('user'));
+							// console.log('token : ' + $cookieStore.get('token'));
 
 							$location.path('/sellerHome');
 						}else if (response.status == 422) {
@@ -49,8 +50,11 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 			});
 		},
 
+		deleteUser:function(){
+			
+		},	
 		logout:function(){
-			console.log("Logging out");
+			// console.log("Logging out");
 			sessionService.deleteSession($cookieStore.get('token')).then(function(response){
 				if (response.status == 200) {
 					alert("Logged Out");
@@ -82,23 +86,26 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
         		request.open('GET', url, false);
         		request.send(null);
 
-        		if (request.status === 200) {
+        		// console.log('condition : ' + angular.isNull(request.responseText));
+        		if (request.status === 200 && !angular.isUndefinedOrNull(request.responseText)) {
             		console.log ('response : ' + request.responseText);
-        		}
+        		
 
         		var jsonResponse = JSON.parse(request.responseText);
-        		console.log('token : ' + jsonResponse["session_token"]);
-        		console.log('condition : ' + sessionToken, angular.toJson(jsonResponse["session_token"]));
+        		// console.log('token : ' + jsonResponse["session_token"]);
+        		// console.log('condition : ' + sessionToken, angular.toJson(jsonResponse["session_token"]));
         		if (angular.equals(sessionToken, angular.toJson(jsonResponse["session_token"]))){
-						console.log("here");
+						// console.log("here");
 						return true;
 					}	
+        		return false;
+        		}
         		return false;
 			}
 		},
 
 		getSessionId:function(){
-			console.log("Get session Id");
+			// console.log("Get session Id");
 			return sessionService.get('user');
 		},
 
@@ -120,13 +127,14 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 					headers: {'Content-type' : undefined}	
 				}).then(function(response){
 					if (response.status = 201) {
-						console.log('response : ' + response.data);
+						// console.log('response : ' + response.data);
 
 						var sessionRequest = new FormData();
 						sessionRequest.append('user_id', response.data.id);
 						sessionRequest.append('session_token', sessionService.generateSessionToken());
-						sessionRequest.append('email', response.data.email);	
-						console.log('sessionRequest : '+sessionRequest);	
+						sessionRequest.append('email', response.data.email);
+						sessionRequest.append('is_fb_user', false);	
+						// console.log('sessionRequest : '+sessionRequest);	
 
 						sessionService.createSession(sessionRequest).then(function(response){
 						
@@ -137,9 +145,9 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 								$cookieStore.put('token',response.data.session_token);
 
 								alert("Register Successfully...!!!");
-								console.log("i am signin");
-								console.log('user : ' + $cookies.get('user'));
-								console.log('token : ' + $cookieStore.get('token'));
+								// console.log("i am signin");
+								// console.log('user : ' + $cookies.get('user'));
+								// console.log('token : ' + $cookieStore.get('token'));
 								$location.path('/sellerHome');
 						}
 						 else {
@@ -156,23 +164,101 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 		    },
 
 		    fbLogin:function(){
+
+		    	FB.getLoginStatus(function(response) {
+				  if (response.status === 'connected') {
+				    var uid = response.authResponse.userID;
+				    var accessToken = response.authResponse.accessToken;
+				    /*
+						Creation a Session for user
+					*/
+					var sessionRequest = new FormData();
+					sessionRequest.append('user_id', uid);
+					sessionRequest.append('new_session_token', accessToken);
+
+					// console.log('here');
+					// console.log(uid + '-->' + accessToken);
+					sessionService.updateSession(sessionRequest).then(function(response){
+						if(response.status == 200){
+							console.log('status : ' + response.data);	
+							alert("Login Successfully...!!!");
+
+							//setting data into cookies
+							$cookies.put('user',uid);
+							$cookieStore.put('token',accessToken);
+
+							// console.log('user id : ' + $cookies.get('user'));
+							// console.log('token : ' + $cookieStore.get('token'));
+
+							$location.path('/sellerHome');
+						}else if (response.status == 422) {
+							alert("User is already logged in")
+						}
+						else {
+							alert("Network Error...Please try again!!!");
+						}		
+					});
+
+				  } else {
 		    	FB.login(function(response) {
     				if (response.authResponse) {
-	     				console.log('Welcome!  Fetching your information.... ');
-	     				FB.api('/me', function(response) {
-	       					console.log('Good to see you, ' + response.name + '.');
-	       					console.log('response');
-	       					console.log(response);
+    					// console.log('loginResponse');
+    					// console.log(response.authResponse.grantedScopes);
+	     			// 	console.log('Welcome!  Fetching your information.... ');
+	     				FB.api('/me', { locale: 'en_US', fields: 'name, email, first_name, last_name' }, function(response) {
+	       					// console.log('Good to see you, ' + response.name + '.');
+	       					var accessToken = FB.getAuthResponse();
+	       					
 
-	       				var accessToken = FB.getAuthResponse();
-	       					console.log('accessToken');
-	       					console.log(accessToken);	
+							sessionService.set('user',response.id);
+
+							/*
+								Creation a Session for user
+							*/
+							var sessionRequest = new FormData();
+							sessionRequest.append('user_id', response.id);
+							sessionRequest.append('session_token', accessToken.accessToken);
+							if(angular.isUndefinedOrNull(response.email)) {
+								sessionRequest.append('email', 'fbuser@test.com');	
+							}else{
+								sessionRequest.append('email', response.email);	
+							}
+							sessionRequest.append('is_fb_user',true);
+								
+							// console.log('sessionRequest : '+sessionRequest);	
+
+							sessionService.createSession(sessionRequest).then(function(response){
+								if(response.status == 201){
+									// console.log('status : ' + response.data);	
+									alert("Login Successfully...!!!");
+
+									//setting data into cookies
+									$cookies.put('user',response.data.user_id);
+									$cookieStore.put('token',response.data.session_token);
+
+									// console.log('user id : ' + $cookies.get('user'));
+									// console.log('token : ' + $cookieStore.get('token'));
+
+									$location.path('/sellerHome');
+								}else if (response.status == 422) {
+									alert("User is already logged in")
+								}
+								 else {
+									alert("Network Error...Please try again!!!");
+								}		
+							}); //session creation done.	
      					});
     				} else {
      					console.log('User cancelled login or did not fully authorize.');
     				}
-				},{scope: 'email,public_profile'});
-		    }
+				}
+				,{
+					scope: 'email,public_profile',
+					return_scopes: true,
+				});
+			  }
+			});
+		}
 	}
 
 });
