@@ -34,11 +34,32 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         }
     }
 
+    $scope.fbLogin = function(){
+        loginService.fbLogin();
+        // $location.path('/sellerHome');
+    } 
+
+    $scope.resetMailId = function(){
+        loginService.deleteUser();
+    }   
+
+    $scope.moveToSellerHome = function(){
+        $location.path('/sellerHome');
+    }
+
+    $scope.isLogin = function(){
+        if(loginService.isLogged()){
+            return true;
+        }else{
+            return false;
+        }
+    }   
+
 });
 
 function Data(user, password){
     this.user = user;
-    this.password = password;
+    this.password = password;    
     return this;
 }
 

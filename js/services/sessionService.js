@@ -18,6 +18,13 @@ app.factory('sessionService',['$http','$q','configService',function($http,$q,con
 			return sessionStorage.getItem(key);
 		},
 
+		updateSession: function(sessionRequest){
+			return $http.post(configService.getRestUrl() + '/sessions/update_session_token', sessionRequest, {
+				transformRequest: sessionRequest,
+				headers: {'Content-type' : undefined}	
+			});
+		},
+
 		getSessionDetails: function(key){
 			var deferred = $q.defer();
 			return $http.get(configService.getRestUrl() + '/sessions?user_id=' + key).then(function(response){

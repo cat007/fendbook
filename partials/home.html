@@ -31,12 +31,16 @@
 		</div>
 
 
-
-
-
-
-		<div class="container">
-			<div class="jumbotron" >
+		<div class="container" ng-switch="isLogin()">
+			<div class="jumbotron" ng-switch-when="true">
+				<center>
+				<h1>WELCOME TO BOOK WORLD </h1>
+				<p>Great books help you understand, and they help you feel understood. -- John Green</p>
+				<a class="btn btn-default btn-primary"> BUY NOW ! </a>
+				<a class="btn btn-default btn-primary" ng-click="moveToSellerHome()">SELL NOW ! </a>
+				</center>
+			</div>
+			<div class="jumbotron" ng-switch-when="false">
 				<center>
 				<h1>WELCOME TO BOOK WORLD </h1>
 				<p>Great books help you understand, and they help you feel understood. -- John Green</p>
@@ -165,21 +169,24 @@
 										</div>
 										
 										<div class="row popup_row-sm-offset-3 popup_loginOr">
-											<div class="col-xs-12">
+											<!-- <div class="col-xs-12"> -->
+											<div>
 												<hr class="popup_hrOr">
 												<span class="popup_spanOr">Or</span>
 											</div>
 
 										</div>
 
-										<div class="row popup_row-sm-offset-3 popup_socialButtons">
-    	    								<div class="col-xs-4">
-		        								<a href="#" class="btn btn-lg btn-block popup_btn-facebook">
+										<!-- <div class="row popup_row-sm-offset-3 popup_socialButtons"> -->
+										<div class="popup_socialButtons">
+    	    								<!-- <div class="col-xs-4"> -->
+    	    								<div>
+		        								<a ng-click="fbLogin()" class="btn btn-lg btn-block popup_btn-facebook" data-dismiss="modal">
 			        								<i class="fa fa-facebook visible-xs"></i>
 			        								<span class="hidden-xs">Facebook</span>
 		        								</a>
 	        								</div>
-	        								<div class="col-xs-4">
+	        								<!-- <div class="col-xs-4">
 										        <a href="#" class="btn btn-lg btn-block popup_btn-twitter">
 											    	<i class="fa fa-twitter visible-xs"></i>
 											    	<span class="hidden-xs">Twitter</span>
@@ -190,7 +197,7 @@
 											        <i class="fa fa-google-plus visible-xs"></i>
 											        <span class="hidden-xs">Google+</span>
 										        </a>
-									        </div>	
+									        </div>	 -->
 										</div>
 						  			</div>
 								</form>
@@ -291,7 +298,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i>@</i></div>
-							<input type="email" name="input" class="form-control" id="fpwd_email" placeholder="Enter Your Mail Id" ng-model="emailid" required>
+							<input type="email" name="input" class="form-control" placeholder="Enter Your Mail Id" ng-model="fpwd_email" required>
 						</div>
 						<span class="help-block has-error error" id="fp" ng-show="forgotPassword.input.$error.email">Not a valid email</span>
 					</div>  
