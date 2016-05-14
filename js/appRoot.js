@@ -9,8 +9,8 @@ app.config(function ($routeProvider) {
         .when('/manageBooks', { templateUrl: 'partials/ManageBooks.html', controller: 'manageBookCtrl'})
         .when('/book/:id',{templateUrl : 'partials/FullBookView.html', controller: 'manageBookCtrl'})
         .when('/SideFilter',{templateUrl: 'partials/SideFilter.html',controller: 'customerCtrl'})
-        
-        
+        .when('/viewuploadedBook', { templateUrl: 'partials/ViewUploadedBook.html', controller: 'sellerHomeCtrl'})
+        .when('/forgotPassword/:serviceRequestId', { templateUrl: 'partials/forgotPassword.html', controller: 'loginCtrl'})
         .otherwise({ redirectTo: '/home', templateUrl : 'partials/home.html'});
 });
 
