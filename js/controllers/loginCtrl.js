@@ -34,6 +34,11 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         }
     }
 
+    $scope.sendMail = function(){
+        var email = $scope.fpwd_email;
+        loginService.sendForgotPasswordInstruction($scope);
+    }
+
     $scope.fbLogin = function(){
         loginService.fbLogin();
         // $location.path('/sellerHome');

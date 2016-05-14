@@ -1,4 +1,4 @@
-app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessionService,configService){
+app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessionService,configService,promiseService){
 
 	return {
 		login:function(data,scope){
@@ -53,6 +53,27 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 		deleteUser:function(){
 			
 		},	
+
+		changePassword : function(scope){
+				promiseService.getUserDetailsWithServiceToken(scope.service_token).then(function(response){
+					if (response.status == 200 && !angular.isUndefinedOrNull(response.data)) {
+						var resetPasswordRequest = new FormData();
+						resetPasswordRequest.append('email', response.data.email);
+						resetPasswordRequest.append('password', scope.fp_password);
+
+						promiseService.updatePassword(resetPasswordRequest).then(function(response){
+							if (response.status == 200) {
+								alert("Password Changed Successfully. Please login Now.");
+								$location.path('/home');
+							};	
+						});
+					}else{
+						alert("Service request doesn't exists. Please raise reset password Instructions again");
+					}
+				});
+		},
+
+
 		logout:function(){
 			// console.log("Logging out");
 			sessionService.deleteSession($cookieStore.get('token')).then(function(response){
@@ -67,6 +88,7 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 				}
 			});
 		},
+
 
 		isLogged:function(){
 			var sessionToken = $cookies.get('token');
@@ -102,6 +124,39 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
         		}
         		return false;
 			}
+		},
+
+		sendForgotPasswordInstruction:function(scope){
+			$http.get(configService.getRestUrl() + '/users?email=' + scope.fpwd_email).then(function(response){
+
+				if (!angular.isNull(response.data)) {
+					var service_token = angular.generateRandomNumberOfLength(12);
+					angular
+					var link = configService.getUiServiceUrl() + '/forgotpassword' + service_token;
+
+					var fpRequest = new FormData();
+					fpRequest.append('email', scope.fpwd_email);
+					fpRequest.append('service_token', service_token);
+
+					promiseService.updateServiceToken(fpRequest).then(function(response){
+						if (response.status != 200) {
+							alert("Error Occured...Please try after sometimes");
+						}else{
+							console.log("inside else")
+							promiseService.sendMail(fpRequest).then(function(response){
+								if (response.status == 200) {
+									alert("Password Reset Instructions has been sent to your mail id");
+								}else{
+									console.log("Error Occured...Please try again later");		
+								}
+							});
+						}
+					});							
+
+				}else {
+					alert("User Doesn't exists. Please enter a Valid User!!!");
+				}	
+			});
 		},
 
 		getSessionId:function(){

@@ -3,7 +3,8 @@ app.factory('configService',function(){
 	var configDetails = {
 	APP_NAME: 'My App',
   	APP_VERSION: '0.1',
-  	REST_URL: 'http://localhost:3000/api'
+  	REST_URL: 'http://localhost:3000/api',
+  	UI_SERVICE_URL: 'http://localhost:8000/index.html'
 }
 
 	var configFactory = {};
@@ -18,6 +19,14 @@ app.factory('configService',function(){
 
 	configFactory.getAppVersion = function() {
 		return configDetails.APP_VERSION;
+	}
+
+	configFactory.getForgotPasswordMessage = function(){
+		return 'Your Temporary Password Is : '
+	}
+
+	configFactory.getUiServiceUrl = function(){
+		return configDetails.UI_SERVICE_URL;
 	}
 
 	return configFactory;

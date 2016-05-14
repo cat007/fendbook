@@ -7,8 +7,7 @@ app.config(function ($routeProvider) {
         .when('/sellerHome', { templateUrl: 'partials/sellerHome.html', controller: 'sellerHomeCtrl'})
         .when('/successUpload', { templateUrl: 'partials/SuccessfulUpload.html', controller: 'successfulUploadCtrl'})
         .when('/viewuploadedBook', { templateUrl: 'partials/ViewUploadedBook.html', controller: 'sellerHomeCtrl'})
-        
-        
+        .when('/forgotPassword/:serviceRequestId', { templateUrl: 'partials/forgotPassword.html', controller: 'loginCtrl'})
         .otherwise({ redirectTo: '/home', templateUrl : 'partials/home.html'});
 });
 

@@ -303,7 +303,7 @@
 						<span class="help-block has-error error" id="fp" ng-show="forgotPassword.input.$error.email">Not a valid email</span>
 					</div>  
 
-					<button type="button" id="fpwd_btn" class="btn bt-fpwd pull-right">Send Password Reset Instructions
+					<button type="button" id="fpwd_btn" class="btn bt-fpwd pull-right" ng-click="sendMail()" data-dismiss="modal" >Send Password Reset Instructions
 					</button>
 					<div class="clearfix"></div>
 
