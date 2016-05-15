@@ -26,10 +26,10 @@ app.factory('bookService',function($http){
 		updateNoOfViews:function(book_id){
 			return $http.post('http://localhost:3000/api/books/'+book_id +'/update_views');
 
+		},
+		getUniqueSearchParams:function(){
+			return $http.get("http://localhost:3000/api/books/search/get_unique_search_params");
 		}
-		
-
-
 	}
 
 });

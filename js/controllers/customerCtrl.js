@@ -28,6 +28,18 @@ app.controller('customerCtrl',function($scope,$location,$rootScope,bookService,l
     var posted_for='';
     var post_for={"url":"","count":0};
 
+            bookService.getUniqueSearchParams().then(function(response){
+            console.log("COOL Response");
+            console.log(response);
+             $scope.resParams = response.data;
+             console.log("COOL Response CP 2");
+             console.log($scope.resParams);
+            // $location.path("/viewuploadedBook");
+
+
+        });
+
+
     $scope.bookCheckBox=function( ){
     	 console.log("Book CheckBox : ")
     	  console.log($scope.bookvalue);
