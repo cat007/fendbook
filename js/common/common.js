@@ -15,3 +15,10 @@ angular.generateRandomNumberOfLength = function(length){
     return sessionToken;
 }
 
+angular.stringCompare = function(s1, s2){
+	if (s1 === s2) {
+		return true;
+	}else {
+		return false;
+	}
+}

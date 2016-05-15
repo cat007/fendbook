@@ -1,4 +1,4 @@
-var app = angular.module('bookapp', ['ngRoute','ngCookies']);
+var app = angular.module('bookapp', ['ngRoute','ngCookies','angular-md5']);
 
 //This configures the routes and associates each route with a view and a controller
 app.config(function ($routeProvider) {
@@ -10,7 +10,7 @@ app.config(function ($routeProvider) {
         .when('/book/:id',{templateUrl : 'partials/FullBookView.html', controller: 'manageBookCtrl'})
         .when('/SideFilter',{templateUrl: 'partials/SideFilter.html',controller: 'customerCtrl'})
         .when('/viewuploadedBook', { templateUrl: 'partials/ViewUploadedBook.html', controller: 'sellerHomeCtrl'})
-        .when('/forgotPassword/:serviceRequestId', { templateUrl: 'partials/forgotPassword.html', controller: 'loginCtrl'})
+        .when('/forgotPassword/:serviceRequestId', { templateUrl: 'partials/forgotPassword.html', controller: 'forgotPwdCtrl'})
         .otherwise({ redirectTo: '/home', templateUrl : 'partials/home.html'});
 });
 

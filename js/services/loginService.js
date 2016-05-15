@@ -1,50 +1,56 @@
-app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessionService,configService,promiseService){
+app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessionService,configService,promiseService,md5){
 
 	return {
 		login:function(data,scope){
 			//Ideally check whether the username and password exists in the backend or not
-			$http.get(configService.getRestUrl() + '/users?email=' + data.user + '&password=' + data.password).then(function(response){
+			$http.get(configService.getRestUrl() + '/users?email=' + data.user + '&hash=true').then(function(response){
 
 				if(response.data != null){
 					// console.log("response = " + response.data);
 					var loginResponse = response.data;
 					// console.log(loginResponse);
 					// console.log("User Name : " + loginResponse.first_name + ' ' + loginResponse.last_name);
-					sessionService.set('user',loginResponse.id);
+					var curr_hash = md5.createHash(data.password || '');
 
-					/*
-						Creation a Session for user
-					*/
-					var sessionRequest = new FormData();
-					sessionRequest.append('user_id', loginResponse.id);
-					sessionRequest.append('session_token', sessionService.generateSessionToken());
-					sessionRequest.append('email', loginResponse.email);
-					sessionRequest.append('is_fb_user', false);		
-					// console.log('sessionRequest : '+sessionRequest);	
+					if (angular.stringCompare(curr_hash, loginResponse.hash_value) && loginResponse.authorize) {
+						sessionService.set('user',loginResponse.id);
 
-					sessionService.createSession(sessionRequest).then(function(response){
-						if(response.status == 201){
-							// console.log('status : ' + response.data);	
-							alert("Login Successfully...!!!");
+						/*
+							Creation a Session for user
+						*/
+						var sessionRequest = new FormData();
+						sessionRequest.append('user_id', loginResponse.id);
+						sessionRequest.append('session_token', sessionService.generateSessionToken());
+						sessionRequest.append('email', loginResponse.email);
+						sessionRequest.append('is_fb_user', false);		
+						// console.log('sessionRequest : '+sessionRequest);	
 
-							//setting data into cookies
-							$cookies.put('user',response.data.user_id);
-							$cookieStore.put('token',response.data.session_token);
+						sessionService.createSession(sessionRequest).then(function(response){
+							if(response.status == 201){
+								// console.log('status : ' + response.data);	
+								alert("Login Successfully...!!!");
 
-							// console.log('user id : ' + $cookies.get('user'));
-							// console.log('token : ' + $cookieStore.get('token'));
+								//setting data into cookies
+								$cookies.put('user',response.data.user_id);
+								$cookieStore.put('token',response.data.session_token);
 
-							$location.path('/sellerHome');
-						}else if (response.status == 422) {
-							alert("User is already logged in")
-						}
-						 else {
-							alert("Network Error...Please try again!!!");
-						}		
-					}); //session creation done.
+								// console.log('user id : ' + $cookies.get('user'));
+								// console.log('token : ' + $cookieStore.get('token'));
+
+								$location.path('/sellerHome');
+							}else if (response.status == 422) {
+								alert("User is already logged in")
+							}
+							 else {
+								alert("Network Error...Please try again!!!");
+							}		
+						}); //session creation done.
+					}else{
+						alert("Incorrect Username and Password, Please try again!!!");
+					}	
 				}
 				else{
-					alert("Incorrect Username and Password, Please try again!!!");
+					alert("Invalid Username and Password, Please try again!!!");
 					$location.path('/signin');
 				}
 			});
@@ -57,16 +63,23 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 		changePassword : function(scope){
 				promiseService.getUserDetailsWithServiceToken(scope.service_token).then(function(response){
 					if (response.status == 200 && !angular.isUndefinedOrNull(response.data)) {
-						var resetPasswordRequest = new FormData();
-						resetPasswordRequest.append('email', response.data.email);
-						resetPasswordRequest.append('password', scope.fp_password);
 
-						promiseService.updatePassword(resetPasswordRequest).then(function(response){
-							if (response.status == 200) {
-								alert("Password Changed Successfully. Please login Now.");
-								$location.path('/home');
-							};	
-						});
+						if (angular.isUndefinedOrNull(scope.fp_password)) {
+							alert("Password is Empty!");
+						}else {
+							var curr_hash = md5.createHash(scope.fp_password || '');	
+
+							var resetPasswordRequest = new FormData();
+							resetPasswordRequest.append('email', response.data.email);
+							resetPasswordRequest.append('password', curr_hash);
+
+							promiseService.updatePassword(resetPasswordRequest).then(function(response){
+								if (response.status == 200) {
+									alert("Password Changed Successfully. Please login Now.");
+									$location.path('/home');
+								};	
+							});	
+						}
 					}else{
 						alert("Service request doesn't exists. Please raise reset password Instructions again");
 					}
@@ -132,7 +145,7 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 				if (!angular.isNull(response.data)) {
 					var service_token = angular.generateRandomNumberOfLength(12);
 					angular
-					var link = configService.getUiServiceUrl() + '/forgotpassword' + service_token;
+					var link = configService.getUiServiceUrl() + '/forgotpassword/' + service_token;
 
 					var fpRequest = new FormData();
 					fpRequest.append('email', scope.fpwd_email);
@@ -142,7 +155,7 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 						if (response.status != 200) {
 							alert("Error Occured...Please try after sometimes");
 						}else{
-							console.log("inside else")
+							// console.log("inside else")
 							promiseService.sendMail(fpRequest).then(function(response){
 								if (response.status == 200) {
 									alert("Password Reset Instructions has been sent to your mail id");
@@ -168,14 +181,15 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 			/*
 			Request Payload to create user
 			*/
+			var curr_hash = md5.createHash(scope.reg_password || '');	
+
 			userdata = new FormData();
         	userdata.append('first_name','testuser');
         	userdata.append('email',scope.reg_email);
         	userdata.append('contact_no',scope.reg_contact);
-        	userdata.append('password',scope.reg_password);
-        	userdata.append('confirm_password',scope.reg_repassword);
+        	userdata.append('password',curr_hash);
         	userdata.append('is_active',1);
-        	userdata.append('temp_password','temp');
+        	userdata.append('is_authorize',1);
 
         	$http.post(configService.getRestUrl() + '/users',userdata, {
 				transformRequest: userdata,

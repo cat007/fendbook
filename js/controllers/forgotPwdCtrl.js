@@ -4,7 +4,4 @@ app.controller('forgotPwdCtrl',function($scope,$location,$routeParams,loginServi
 		$scope.service_token = $routeParams.serviceRequestId;
 		loginService.changePassword($scope);
 	}
-
-
-
 });
