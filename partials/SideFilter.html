@@ -1,5 +1,138 @@
 <div ng-controller="customerCtrl">
+
+   <script type="text/javascript">
+var country_list = ["Science fiction","Satire","Drama","Action and Adventure","Romance","Mystery","Horror","Self help","Health","Guide","Travel","Children's","Religion, Spirituality & New Age","Science","History","Math","Anthology","Poetry","Encyclopedias","Dictionaries","Comics","Art","Cookbooks","Diaries","Journals","Prayer books","Series","Trilogy","Biographies","Autobiographies","Fantasy"];
+
+$(document).ready(function(){
+
+   // var controllerScope = angular.element(controllerElement).scope();
+   var scope = angular.element($("#outer")).scope();
+   console.log("scope = ");
+   console.log(scope);
+   // console.log("results Params = ");
+   // console.log(controllerScope.resParams);
+// Instantiate the Bloodhound suggestion engine
+var movies = new Bloodhound({
+    datumTokenizer: function (datum) {
+        return Bloodhound.tokenizers.whitespace(datum.value);
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: $.map(country_list,function(item){
+      return {value : item};
+    })
+    // remote: {
+    //   //Should have a new API
+    //     url: 'http://localhost:3000/api/books/search/get_unique_search_params?query=%QUERY',
+    //     wildcard: '%QUERY',
+    //     filter: function (results) {
+    //         console.log("results = ");
+    //         console.log(results);
+    //         return $.map(results,function(item){
+    //           return {
+    //             value : item
+    //           };
+    //       })
+            
+
+
+    //     }
+    // }
+});
+
+
+// Initialize the Bloodhound suggestion engine
+movies.initialize();
+
+// Instantiate the Typeahead UI
+$('.typeahead').typeahead(
+{
+    hint: true,
+    highlight: true,
+    minLength: 1
+}, {
+    name: 'movies',
+    displayKey: 'value',
+    source: movies.ttAdapter(),
+    templates: {
+                        empty: [
+                            '<div class="noitems">',
+                            'No Items Found',
+                            '</div>'
+                        ].join('\n')
+                    }
+});
+});
+</script>
+
    <style type="text/css">.col-lg-123{width:8.33333333%;height:30px}</style>
+   <style>
+.typeahead,
+.tt-query,
+.tt-hint {
+  width: 396px;
+  height: 40px;
+  padding: 8px 12px;
+  font-size: 24px;
+  line-height: 30px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  outline: none;
+}
+
+.typeahead {
+  background-color: #fff;
+}
+
+.typeahead:focus {
+  border: 2px solid #0097cf;
+}
+
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+  color: #999
+}
+
+.tt-dropdown-menu {
+  width: 422px;
+  margin-top: 12px;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+tt-highlight{
+    color:red;
+}
+</style>
    <!-- Header Start--> 
    <div class="navbar navbar-default navbar-static-top">
       <div class="container">
@@ -16,7 +149,11 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
          </button>
+
          <div class="collapse navbar-collapse navbarHeaderCollapse">
+            <ul class = "nav navbar-nav navbar-center">
+               <input class="typeahead" type="text" id="typeahead" class="form-control"></input>
+            </ul>
             <ul class = "nav navbar-nav navbar-right">
                <li><a href="#">Home</a></li>
                <li><a href="#">Our Vision</a></li>
