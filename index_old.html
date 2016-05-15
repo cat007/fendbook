@@ -12,6 +12,7 @@
 <script type="text/javascript" src="js/typeahead/typeahead.jquery.min.js"> </script>
 <script type="text/javascript" src="js/typeahead/typeahead.jquery.js"> </script>
 
+
 <style>
 .typeahead,
 .tt-query,
@@ -84,11 +85,26 @@ tt-highlight{
 
 <script type="text/javascript">
 
+
+
+
+
 var country_list = ["Science fiction","Satire","Drama","Action and Adventure","Romance","Mystery","Horror","Self help","Health","Guide","Travel","Children's","Religion, Spirituality & New Age","Science","History","Math","Anthology","Poetry","Encyclopedias","Dictionaries","Comics","Art","Cookbooks","Diaries","Journals","Prayer books","Series","Trilogy","Biographies","Autobiographies","Fantasy"];
 
 // def get_search_params
+
 function get_search_params(){
-  
+
+      var unique_search_params = $http.get("http://localhost:3000/api/books/search/get_unique_search_params").then(function(response){
+      console.log("COOL the things changed 1");
+      console.log(response);
+      console.log(response.data);
+
+      // $location.path("/viewuploadedBook");
+      return unique_search_params;
+
+
+    });
 }
 
 
@@ -104,24 +120,27 @@ var movies = new Bloodhound({
     })
     // remote: {
     //   //Should have a new API
-    //     url: 'http://localhost:3000/api/books?id=69',
-    //     //url: 'http://yourhost_ip/foo_autocomplete?query=%QUERY',
-    //     filter: function (movies) {
-    //         // Map the remote source JSON array to a JavaScript array
-    //         console.log("movies.lenth");
-    //         console.log(movies.length);
-    //         console.log("Length computed");
-
-    //         mov = ["Ash","Ash1","Ash2","Ash3"];
+    //     url: 'http://localhost:3000/api/books/search/get_unique_search_params?query=%QUERY',
+    //     wildcard: '%QUERY',
+    //     filter: function (results) {
+    //         console.log("results = ");
+    //         console.log(results);
+    //         return $.map(results,function(item){
     //           return {
-    //             value: mov
+    //             value : item
     //           };
+    //       })
+            
+
+
     //     }
     // }
 });
 
+
 // Initialize the Bloodhound suggestion engine
 movies.initialize();
+
 // Instantiate the Typeahead UI
 $('.typeahead').typeahead(
 {
@@ -129,7 +148,7 @@ $('.typeahead').typeahead(
     highlight: true,
     minLength: 1
 }, {
-    name: 'value',
+    name: 'movies',
     displayKey: 'value',
     source: movies.ttAdapter(),
     templates: {
@@ -142,13 +161,14 @@ $('.typeahead').typeahead(
 });
 });
 
+
 </script>
 
 
 </head>
 
 <body>
-  <input class="typeahead"></input>
+  <input class="typeahead" type="text" id="typeahead" class="form-control"></input>
 
 
 </body>
