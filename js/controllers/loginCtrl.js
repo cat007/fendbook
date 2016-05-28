@@ -20,6 +20,15 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         $scope.login_password = null;
     }
 
+    $scope.clearOnSigninClick = function(){
+        $scope.reg_fullname = null;
+        $scope.reg_email = null;
+        $scope.reg_contact = null;
+        $scope.reg_password = null;
+        $scope.reg_repassword = null;
+        $scope.fpwd_email = null;
+    }
+
     $scope.sendMail = function(){
         var email = $scope.fpwd_email;
         loginService.sendForgotPasswordInstruction($scope);
