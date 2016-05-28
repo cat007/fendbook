@@ -73,7 +73,7 @@
 	</div>
 
 
-<div class="modal fade" id="signinn" role="dialog">
+<!-- <div class="modal fade" id="signinn" role="dialog">
 	<div class = "modal-dialog">
 		<div class = "modal-content">
 			<form class="form-horizontal" action="/">
@@ -107,7 +107,7 @@
 	</div>
 </div>
 
-
+ -->
 <!-- Signin Pop-up HTML implementation -->
 <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinModalLabel" aria-hidden="true">
 	<div class="modal-dialog login-modal-dialog">
@@ -132,21 +132,21 @@
 						<!-- <div class="tab-content"> -->
 					    	<div class="login-modal-form" id="home">
 					    		&nbsp;&nbsp;
-					    		<form name="loginForm">
+					    		<form name="loginForm" id="login-form">
 									<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i>@</i></div>
-								      		<input type="email" name="input" class="form-control"  placeholder="somebody@example.com" ng-model="login_email" required>
+								      		<input type="email" name="login_email" class="form-control" id="login_email" placeholder="somebody@example.com" ng-model="login_email" required>
 								    	</div>
-								    	<span class="help-block has-error error" id="login-email-error" ng-show="loginForm.input.$error.email">Invalid email</span>
+								    	<!-- <span class="help-block has-error error" id="login-email-error" ng-show="loginForm.input.$error.email">Invalid email</span> -->
 								  	</div>
 								  	<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-								      		<input type="password" name="input" class="form-control" placeholder="Password" 
+								      		<input type="password" name="input" id = "login_password" class="form-control" placeholder="Password" 
 								      		ng-model="login_password">
 								    	</div>
-								    	<span class="help-block has-error" id="login-password-error"></span>
+								    	<!-- <span class="help-block has-error" id="login-password-error"></span> -->
 								  	</div>
 						  			<button type="button" id="login_btn" class="btn btn-block bt-login center-block" data-loading-text="Signing In...." ng-click="login()" data-dismiss="modal">Login</button>
 						  			<div class="clearfix"></div>
@@ -267,7 +267,7 @@
 					<div class="clearfix"></div>
 
 					<div class="text-right text-bottom-margin">
-						<a href="#signin" data-toggle = "modal" data-dismiss="modal" class="signin-tab"><strong>Already an user Sign in?</strong></a>
+						<a href="#signin" data-toggle = "modal" data-dismiss="modal" class="signin-tab" ng-click="clearOnSigninClick()"><strong>Already an user Sign in?</strong></a>
 					</div>
 
 				</form>			
@@ -306,7 +306,7 @@
 					<div class="clearfix"></div>
 
 					<div class="text-right text-bottom-margin">
-						<a href="#signin" data-toggle = "modal" data-dismiss="modal" class="signin-tab"><strong>Back to Sign in?</strong></a>
+						<a href="#signin" data-toggle = "modal" data-dismiss="modal" class="signin-tab" ng-click="clearOnSigninClick()"><strong>Back to Sign in?</strong></a>
 					</div>
 				</form>
 				</div>
