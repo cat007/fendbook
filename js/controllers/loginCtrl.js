@@ -20,20 +20,6 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         $scope.login_password = null;
     }
 
-    $scope.showPassword = function(){
-        var key_attr = $('#key').attr('type');
-    
-        if(key_attr != 'text') {
-            $('.checkbox').addClass('show');
-            $('#key').attr('type', 'text');
-        
-        } else {
-            $('.checkbox').removeClass('show');
-            $('#key').attr('type', 'password');
-        
-        }
-    }
-
     $scope.sendMail = function(){
         var email = $scope.fpwd_email;
         loginService.sendForgotPasswordInstruction($scope);
@@ -77,21 +63,4 @@ if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){
   return false;  
   }
   return true;  
-}
-
-function showPassword() {
-    
-    var key_attr = $('#key').attr('type');
-    
-    if(key_attr != 'text') {
-        
-        $('.checkbox').addClass('show');
-        $('#key').attr('type', 'text');
-        
-    } else {
-        
-        $('.checkbox').removeClass('show');
-        $('#key').attr('type', 'password');
-        
-    }  
 }

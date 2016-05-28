@@ -184,7 +184,7 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 			var curr_hash = md5.createHash(scope.reg_password || '');	
 
 			userdata = new FormData();
-        	userdata.append('first_name','testuser');
+        	userdata.append('first_name',scope.reg_fullname);
         	userdata.append('email',scope.reg_email);
         	userdata.append('contact_no',scope.reg_contact);
         	userdata.append('password',curr_hash);

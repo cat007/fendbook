@@ -135,10 +135,10 @@
 					    		<form name="loginForm">
 									<div class="form-group">
 								    	<div class="input-group">
-								      		<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+								      		<div class="input-group-addon"><i>@</i></div>
 								      		<input type="email" name="input" class="form-control"  placeholder="somebody@example.com" ng-model="login_email" required>
 								    	</div>
-								    	<span class="help-block has-error error" id="login-email-error" ng-show="loginForm.input.$error.email">Not a valid email</span>
+								    	<span class="help-block has-error error" id="login-email-error" ng-show="loginForm.input.$error.email">Invalid email</span>
 								  	</div>
 								  	<div class="form-group">
 								    	<div class="input-group">
@@ -148,10 +148,6 @@
 								    	</div>
 								    	<span class="help-block has-error" id="login-password-error"></span>
 								  	</div>
-								  	<div class="checkbox">
-                            			<span class="character-checkbox" name="login_checkbox" ng-click="showPassword()"></span>
-                            			<span class="label">Show password</span>
-                        			</div>
 						  			<button type="button" id="login_btn" class="btn btn-block bt-login center-block" data-loading-text="Signing In...." ng-click="login()" data-dismiss="modal">Login</button>
 						  			<div class="clearfix"></div>
 						  			
@@ -227,12 +223,20 @@
 				<div class="login-modal-form" id="profile">
 					&nbsp;&nbsp;
 				<form name="signupform">
+					<div class="form-group">			
+						<div class="input-group">
+							<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+							<input type="text" class="form-control" ng-model="reg_fullname" id="reg_fullname" placeholder="Enter Fullname">
+						</div>
+						<span class="help-block has-error" id="email-error"></span>
+					</div>	
+
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i>@</i></div>
-							<input type="email" name="input" class="form-control" id="signup_email" placeholder="Enter Your Mail Id" ng-model="reg_email" required>
+							<input type="email" name="input" class="form-control" id="signup_email" placeholder="Enter Mail Id" ng-model="reg_email" required>
 						</div>
-						<span class="help-block has-error error" id="signup_email_error" ng-show="signupform.input.$error.email">Not a valid email</span>
+						<span class="help-block has-error error" id="signup_email_error" ng-show="signupform.input.$error.email">Invalid email</span>
 					</div>  
 
 					<div class="form-group">
@@ -246,7 +250,7 @@
 					<div class="form-group">	
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-							<input type="text" class="form-control" id="signup_password" ng-model="reg_password" placeholder="Password">
+							<input type="password" class="form-control" id="signup_password" ng-model="reg_password" placeholder="Password">
 						</div>
 						<span class="help-block has-error" id="email-error"></span>
 					</div>
@@ -254,17 +258,11 @@
 					<div class="form-group">			
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-							<input type="text" class="form-control" ng-model="reg_repassword" id="signup_reenter_password" placeholder="Renter Password">
+							<input type="password" class="form-control" ng-model="reg_repassword" id="signup_reenter_password" placeholder="Renter Password">
 						</div>
 						<span class="help-block has-error" id="email-error"></span>
 					</div>
-						
-					<div class="checkbox">
-                    	<span class="character-checkbox" name="signup_checkbox" ng-click="showPassword()"></span>
-                    	<span class="label">Show password</span>
-                    </div>
-
-                    <button type="button" id="signup_btn" class="btn btn-block bt-signup pull-right" data-loading-text="Singing Up...." data-dismiss="modal" ng-click="registerUser()">Submit
+					<button type="button" id="signup_btn" class="btn btn-block bt-signup pull-right" data-loading-text="Singing Up...." data-dismiss="modal" ng-click="registerUser()">Submit
                     </button>
 					<div class="clearfix"></div>
 
@@ -298,9 +296,9 @@
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i>@</i></div>
-							<input type="email" name="input" class="form-control" placeholder="Enter Your Mail Id" ng-model="fpwd_email" required>
+							<input type="email" name="input" class="form-control" placeholder="Enter Mail Id" ng-model="fpwd_email" required>
 						</div>
-						<span class="help-block has-error error" id="fp" ng-show="forgotPassword.input.$error.email">Not a valid email</span>
+						<span class="help-block has-error error" id="fp" ng-show="forgotPassword.input.$error.email">Invalid email</span>
 					</div>  
 
 					<button type="button" id="fpwd_btn" class="btn bt-fpwd pull-right" ng-click="sendMail()" data-dismiss="modal" >Send Password Reset Instructions
