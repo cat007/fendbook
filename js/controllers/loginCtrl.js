@@ -29,6 +29,14 @@ app.controller('loginCtrl',function($scope,$location,loginService){
         $scope.fpwd_email = null;
     }
 
+    $scope.comparePasswords = function(){
+        if ($scope.reg_password != $scope.reg_repassword) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     $scope.sendMail = function(){
         var email = $scope.fpwd_email;
         loginService.sendForgotPasswordInstruction($scope);

@@ -58,5 +58,7 @@ app.factory('sessionService',['$http','$q','configService',function($http,$q,con
     		console.log('Session Token :' + sessionToken);
     		return sessionToken;
 		}
+
+
 	}
 }]);
