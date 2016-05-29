@@ -6,11 +6,6 @@
 					<img src="Content/Images/rsz_books.png" alt="logo"> Book Store 
 				</div>
 
-
-<!-- 				<a href="#" class="navbar-brand"> 
-					Book Store
-				</a>
- -->
 				<button class="navbar-toggle" data-toggle="collapse" data-target = ".navbarHeaderCollapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -72,42 +67,6 @@
 		</div>
 	</div>
 
-
-<!-- <div class="modal fade" id="signinn" role="dialog">
-	<div class = "modal-dialog">
-		<div class = "modal-content">
-			<form class="form-horizontal" action="/">
-				<div class = "modal-header">
-					<div> Sign In</div>
-				</div>
-				<div class = "modal-body">
-					<div class="form-group">
-						<label for="contact-email" class="col-lg-2 control-label">Email Id:</label>
-						<div class="col-lg-10">
-							<input type="email" class="form-control" id="contact-email" placeholder= "Email Id" ng-model="emailId">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="password" class="col-lg-2 control-label" >Password:</label>
-						<div class="col-lg-10">
-							<input type="password" class="form-control" id="password" placeholder= "Password" ng-model="password">
-						</div>
-					</div>
-				</div>
-				<div class = "modal-footer">
-					<a class="btn btn-default btn-primary" data-toggle = "modal" data-dismiss="modal" ng-click="submit()">SIGN IN</a>
-					<a class="btn btn-default btn-primary" href = "#signupp" data-toggle = "modal" data-dismiss="modal">SIGN UP</a>
-					<a class="btn btn-default" data-dismiss="modal">Close</a>
-
-				</div>
-			</form>
-
-		</div>
-	</div>
-</div>
-
- -->
 <!-- Signin Pop-up HTML implementation -->
 <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinModalLabel" aria-hidden="true">
 	<div class="modal-dialog login-modal-dialog">
@@ -119,43 +78,37 @@
 				<h1 class="modal-title login-modal-title text-center" id="signinModalLabel">Sign in</h1>				
 			</div>
 			<div class="model-body">
-				<!-- <div class="text-center"> -->
-					<!-- Nav tabs -->
-<!-- 					<div role="tabpanel" class="login-tab">
-						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a id="signin-taba" href="#home" aria-controls="home" role="tab">
-							Sign In</a></li>							
-							<li role="presentation"><a id="signin-taba" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li>							
-						</ul>
- -->
 						<!-- Tab Panes -->
 						<!-- <div class="tab-content"> -->
 					    	<div class="login-modal-form" id="home">
 					    		&nbsp;&nbsp;
-					    		<form name="loginForm" id="login-form">
+					    		<form name="loginForm" novalidate="novalidate">
 									<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i>@</i></div>
-								      		<input type="email" name="login_email" class="form-control" id="login_email" placeholder="somebody@example.com" ng-model="login_email" required>
+								      		<input type="email" name="loginForm" class="form-control" placeholder="somebody@example.com" ng-model="login_email" required>
 								    	</div>
-								    	<!-- <span class="help-block has-error error" id="login-email-error" ng-show="loginForm.input.$error.email">Invalid email</span> -->
+								    	<div class="help-block has-error error" ng-messages="loginForm.loginForm.$error">
+  											<div ng-message="email">Invalid Email</div>
+								    	</div>
 								  	</div>
 								  	<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-								      		<input type="password" name="input" id = "login_password" class="form-control" placeholder="Password" 
-								      		ng-model="login_password">
+								      		<input type="password" name="login_password" class="form-control" placeholder="Password" ng-model="login_password" ng-minlength="1" required>
 								    	</div>
-								    	<!-- <span class="help-block has-error" id="login-password-error"></span> -->
+								    	<div class="help-block has-error error" ng-messages="loginForm.login_password.$error">
+								    		<div ng-message="minlength">Please Enter Password</div>
+								    	</div>
 								  	</div>
-						  			<button type="button" id="login_btn" class="btn btn-block bt-login center-block" data-loading-text="Signing In...." ng-click="login()" data-dismiss="modal">Login</button>
+						  			<button type="submit" id="login_btn" class="btn btn-block bt-login center-block" ng-click="login()" data-dismiss="modal" ng-disabled="loginForm.$invalid">Login</button>
 						  			<div class="clearfix"></div>
 						  			
 						  			<div class="login-modal-footer">
 						  				<div class="row">
 											<div class="col-xs-8 col-sm-8 col-md-8">
 												<i class="glyphicon glyphicon-lock"></i>
-												<a href="#forgotpassword" data-toggle = "modal" data-dismiss="modal" class="forgetpass-tab"> Forgot password? </a>
+												<a href="#forgotpassword" data-toggle = "modal" data-dismiss="modal" class="forgetpass-tab" ng-click="clearOnSignupClick()"> Forgot password? </a>
 											</div>
 											
 											<div class="col-xs-4 col-sm-4 col-md-4 pull-right">
@@ -165,40 +118,23 @@
 										</div>
 										
 										<div class="row popup_row-sm-offset-3 popup_loginOr">
-											<!-- <div class="col-xs-12"> -->
 											<div>
 												<hr class="popup_hrOr">
 												<span class="popup_spanOr">Or</span>
 											</div>
-
 										</div>
 
-										<!-- <div class="row popup_row-sm-offset-3 popup_socialButtons"> -->
 										<div class="popup_socialButtons">
-    	    								<!-- <div class="col-xs-4"> -->
     	    								<div>
 		        								<a ng-click="fbLogin()" class="btn btn-lg btn-block popup_btn-facebook" data-dismiss="modal">
 			        								<i class="fa fa-facebook visible-xs"></i>
 			        								<span class="hidden-xs">Facebook</span>
 		        								</a>
 	        								</div>
-	        								<!-- <div class="col-xs-4">
-										        <a href="#" class="btn btn-lg btn-block popup_btn-twitter">
-											    	<i class="fa fa-twitter visible-xs"></i>
-											    	<span class="hidden-xs">Twitter</span>
-			        							</a>
-		        							</div>	
-								        	<div class="col-xs-4">
-										        <a href="#" class="btn btn-lg btn-block popup_btn-google">
-											        <i class="fa fa-google-plus visible-xs"></i>
-											        <span class="hidden-xs">Google+</span>
-										        </a>
-									        </div>	 -->
 										</div>
 						  			</div>
 								</form>
 					    	</div>
-					<!-- </div> -->
 				</div>
 
 			</div>
@@ -222,48 +158,55 @@
 			<div class="model-body">
 				<div class="login-modal-form" id="profile">
 					&nbsp;&nbsp;
-				<form name="signupform">
+				<form name="signupform" novalidate="novalidate">
 					<div class="form-group">			
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
-							<input type="text" class="form-control" ng-model="reg_fullname" id="reg_fullname" placeholder="Enter Fullname">
+							<input type="text" class="form-control" ng-model="reg_fullname" name="reg_fullname" id="reg_fullname" placeholder="Enter Fullname" required>
 						</div>
-						<span class="help-block has-error" id="email-error"></span>
+						<!-- <div class="help-block has-error error" ng-messages="signupform.reg_fullname.$error">
+						</div> -->
 					</div>	
 
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i>@</i></div>
-							<input type="email" name="input" class="form-control" id="signup_email" placeholder="Enter Mail Id" ng-model="reg_email" required>
+							<input type="email" name="reg_email" class="form-control" id="signup_email" placeholder="Enter Mail Id" ng-model="reg_email" required>
 						</div>
-						<span class="help-block has-error error" id="signup_email_error" ng-show="signupform.input.$error.email">Invalid email</span>
+						<div class="help-block has-error error" ng-messages="signupform.reg_email.$error">
+  							<div ng-message="email">Invalid Email</div>
+						</div>
 					</div>  
 
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></div>
-							<input type="text" class="form-control" id="signup_contact" ng-model="reg_contact" placeholder="Contact">
+							<input type="text" name="reg_contact" class="form-control" id="signup_contact" ng-model="reg_contact" placeholder="Contact" ng-pattern="/^[1-9]{1}[0-9]{9}$/" required>
 						</div>
-						<span class="help-block has-error" id="email-error"></span>
+						
+						<div class="help-block has-error error" ng-messages="signupform.reg_contact.$error">
+  							<div ng-message="pattern">Must be a valid 10 digit phone number</div>
+						</div>
 					</div>
 
 					<div class="form-group">	
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-							<input type="password" class="form-control" id="signup_password" ng-model="reg_password" placeholder="Password">
+							<input type="password" name="reg_password" class="form-control" id="signup_password" ng-model="reg_password" placeholder="Password" required>
 						</div>
-						<span class="help-block has-error" id="email-error"></span>
+						<div class="help-block has-error error" ng-messages="signupform.reg_password.$error">
+						</div>
 					</div>
 							
 					<div class="form-group">			
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-							<input type="password" class="form-control" ng-model="reg_repassword" id="signup_reenter_password" placeholder="Renter Password">
+							<input type="password" name="reg_repassword" class="form-control" ng-model="reg_repassword" id="signup_reenter_password" placeholder="Renter Password" required>
 						</div>
-						<span class="help-block has-error" id="email-error"></span>
+						<div class="help-block has-error error" ng-messages="signupform.reg_repassword.$error" ng-if="comparePasswords()">Enter Same Password
+						</div>
 					</div>
-					<button type="button" id="signup_btn" class="btn btn-block bt-signup pull-right" data-loading-text="Singing Up...." data-dismiss="modal" ng-click="registerUser()">Submit
-                    </button>
+					<button type="submit" id="signup_btn" class="btn btn-block bt-signup pull-right" data-dismiss="modal" ng-click="registerUser()" ng-disabled="signupform.$invalid">Submit</button>
 					<div class="clearfix"></div>
 
 					<div class="text-right text-bottom-margin">
@@ -292,16 +235,19 @@
 			<div class="model-body">
 				<div class="login-modal-form" id="fpwd">
 					&nbsp;&nbsp;
-				<form name="forgotPassword">
+				<form name="forgotPassword" novalidate="novalidate">
 					<div class="form-group">
 						<div class="input-group">
 							<div class="input-group-addon"><i>@</i></div>
-							<input type="email" name="input" class="form-control" placeholder="Enter Mail Id" ng-model="fpwd_email" required>
+							<input type="email" name="fpwd_email" class="form-control" placeholder="Enter Mail Id" ng-model="fpwd_email" required>
 						</div>
-						<span class="help-block has-error error" id="fp" ng-show="forgotPassword.input.$error.email">Invalid email</span>
+						<div class="help-block has-error error" ng-messages="forgotPassword.fpwd_email.$error">
+  							<div ng-message="email">Invalid Email</div>
+						</div>
+						<!-- <span class="help-block has-error error" id="fp" ng-show="forgotPassword.input.$error.email">Invalid email</span> -->
 					</div>  
 
-					<button type="button" id="fpwd_btn" class="btn bt-fpwd pull-right" ng-click="sendMail()" data-dismiss="modal" >Send Password Reset Instructions
+					<button type="submit" id="fpwd_btn" class="btn bt-fpwd pull-right" ng-click="sendMail()" data-dismiss="modal" ng-disabled="forgotPassword.$invalid">Send Password Reset Instructions
 					</button>
 					<div class="clearfix"></div>
 
@@ -313,48 +259,6 @@
 			</div>		
 		</div>	
 	</div>		
-</div>
-
-<div class="modal fade" id="signupp" role="dialog">
-	<div class = "modal-dialog">
-		<div class = "modal-content">
-			<form class="form-horizontal">
-				<div class = "modal-header">
-					<div> Sign Up</div>
-				</div>
-				<div class = "modal-body">
-					<div class="form-group">
-						<label for="contact-email" class="col-lg-2 control-label">Phone No:</label>
-						<div class="col-lg-10">
-							<input type="email" class="form-control" id="contact-email" placeholder= "Phone No.">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="contact-email" class="col-lg-2 control-label">Email Id:</label>
-						<div class="col-lg-10">
-							<input type="email" class="form-control" id="contact-email" placeholder= "Email Id">
-						</div>
-					</div>
-
-
-					<div class="form-group">
-						<label for="password" class="col-lg-2 control-label">Password:</label>
-						<div class="col-lg-10">
-							<input type="password" class="form-control" id="password" placeholder= "Password">
-						</div>
-					</div>
-				</div>
-				<div class = "modal-footer">
-					<a class="btn btn-default btn-primary" href = "#signinn" data-toggle = "modal" data-dismiss="modal">SIGN UP</a>
-					<a class="btn btn-default" data-dismiss="modal">Close</a>
-
-				</div>
-			</form>
-
-		</div>
-	</div>
-
 </div>
 
 
