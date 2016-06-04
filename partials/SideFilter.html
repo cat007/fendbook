@@ -1,7 +1,6 @@
-<div ng-controller="customerCtrl">
+<div id="div1" ng-controller="customerCtrl">
 
    <script type="text/javascript">
-var country_list = ["Science fiction","Satire","Drama","Action and Adventure","Romance","Mystery","Horror","Self help","Health","Guide","Travel","Children's","Religion, Spirituality & New Age","Science","History","Math","Anthology","Poetry","Encyclopedias","Dictionaries","Comics","Art","Cookbooks","Diaries","Journals","Prayer books","Series","Trilogy","Biographies","Autobiographies","Fantasy"];
 
    var list;
           var request;
@@ -38,13 +37,27 @@ var movies = new Bloodhound({
     })
 });
 
-console.log("Whats the value = ");
-console.log(movies);
-console.log(movies.value);
 
+var selectedDatum;
 
+function getScope(ctrlName) {
+    var sel = 'div[ng-controller="' + ctrlName + '"]';
+    return angular.element(sel).scope();
+}
 
+$('.typeahead').on('typeahead:selected', function(event, datum) {
+  selectedDatum = datum;
+  scope = getScope('customerCtrl');
+  console.log("scope_out");
+  console.log(scope.$$childHead);
+  scope.$apply(function(){
+        scope.selectedBook = selectedDatum.value;
+        scope.bookSelectedNow();
+    });
+  console.log("selectedDatum = ");
+  console.log(selectedDatum.value);
 
+});
 
 
 // Initialize the Bloodhound suggestion engine
@@ -159,7 +172,8 @@ tt-highlight{
 
          <div class="collapse navbar-collapse navbarHeaderCollapse">
             <ul class = "nav navbar-nav navbar-center">
-               <input class="typeahead" type="text" id="typeahead" class="form-control"></input>
+               <input class="typeahead" sf-typeahead type="text" id="typeahead" 
+               class="form-control" ng-model="selectedBook" ng-change="bookSelectedNow()"></input>
             </ul>
             <ul class = "nav navbar-nav navbar-right">
                <li><a href="#">Home</a></li>

@@ -168,6 +168,11 @@ app.controller('customerCtrl',function($scope,$location,$rootScope,bookService,l
 
     }
 
+    $scope.bookSelectedNow = function(){
+        console.log("Book selcted");
+        console.log($scope.selectedBook);
+    }
+
     $scope.prepareFinalUrl=function(){
         console.log("prepareFinalUrl");
         var finalUrl='';
