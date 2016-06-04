@@ -3,41 +3,48 @@
    <script type="text/javascript">
 var country_list = ["Science fiction","Satire","Drama","Action and Adventure","Romance","Mystery","Horror","Self help","Health","Guide","Travel","Children's","Religion, Spirituality & New Age","Science","History","Math","Anthology","Poetry","Encyclopedias","Dictionaries","Comics","Art","Cookbooks","Diaries","Journals","Prayer books","Series","Trilogy","Biographies","Autobiographies","Fantasy"];
 
-$(document).ready(function(){
+   var list;
+          var request;
+            if (window.XMLHttpRequest) {
+                request = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+            } else {
+                throw new Error("Your browser don't support XMLHttpRequest");
+            }
+            var url = "http://localhost:3000/api/books/search/get_unique_search_params";
+            request.open('GET', url, false);
+            request.send(null);
+            if (request.status === 200) {
+            list = JSON.parse(request.responseText);
+            console.log("jsonResponse == ");
+            console.log(list);
+            }
 
-   // var controllerScope = angular.element(controllerElement).scope();
-   var scope = angular.element($("#outer")).scope();
-   console.log("scope = ");
-   console.log(scope);
-   // console.log("results Params = ");
-   // console.log(controllerScope.resParams);
+
+
+   console.log("bookService and books list = ");
+   console.log(list);
+
+$(document).ready(function(){
 // Instantiate the Bloodhound suggestion engine
 var movies = new Bloodhound({
     datumTokenizer: function (datum) {
         return Bloodhound.tokenizers.whitespace(datum.value);
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: $.map(country_list,function(item){
+    local: $.map(list,function(item){
       return {value : item};
     })
-    // remote: {
-    //   //Should have a new API
-    //     url: 'http://localhost:3000/api/books/search/get_unique_search_params?query=%QUERY',
-    //     wildcard: '%QUERY',
-    //     filter: function (results) {
-    //         console.log("results = ");
-    //         console.log(results);
-    //         return $.map(results,function(item){
-    //           return {
-    //             value : item
-    //           };
-    //       })
-            
-
-
-    //     }
-    // }
 });
+
+console.log("Whats the value = ");
+console.log(movies);
+console.log(movies.value);
+
+
+
+
 
 
 // Initialize the Bloodhound suggestion engine
