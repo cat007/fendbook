@@ -110,8 +110,16 @@ body{
 }
 
 .login-modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+}
+
+@media (min-width: 768px) {
+  .login-modal-dialog {
     width: 480px;
-    margin: 30px auto
+    margin: 30px auto;
+  }
 }
 
 .login-modal i {
