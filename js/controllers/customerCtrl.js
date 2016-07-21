@@ -171,6 +171,10 @@ app.controller('customerCtrl',function($scope,$location,$rootScope,bookService,l
     $scope.bookSelectedNow = function(){
         console.log("Book selcted");
         console.log($scope.selectedBook);
+        console.log("Book Selected End")
+        bookService.getBookByAuthor($scope).then(function(response){
+            $scope.resBooks=response.data;
+        });
     }
 
     $scope.prepareFinalUrl=function(){
