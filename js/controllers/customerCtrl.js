@@ -6,7 +6,7 @@ app.controller('customerCtrl',function($scope,$location,$rootScope,bookService,l
     console.log("User id = ");
     console.log(user_id);
 
-    		bookService.getAllBooksForUserId(user_id,$scope).then(function(response){
+    		bookService.getDefaultBooks().then(function(response){
 			console.log("customerCtrl change  1");
 			console.log(response);
 			 $scope.resBooks = response.data;
