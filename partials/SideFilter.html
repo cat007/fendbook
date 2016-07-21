@@ -52,9 +52,9 @@ $('.typeahead').on('typeahead:selected', function(event, datum) {
   console.log(scope.$$childHead);
   scope.$apply(function(){
         scope.selectedBook = selectedDatum.value;
-        scope.bookSelectedNow();
     });
   console.log("selectedDatum = ");
+  scope.bookSelectedNow();
   console.log(selectedDatum.value);
 
 });
@@ -173,7 +173,7 @@ tt-highlight{
          <div class="collapse navbar-collapse navbarHeaderCollapse">
             <ul class = "nav navbar-nav navbar-center">
                <input class="typeahead" sf-typeahead type="text" id="typeahead" 
-               class="form-control" ng-model="selectedBook" ng-change="bookSelectedNow()"></input>
+               class="form-control" ng-model="selectedBook"></input>
             </ul>
             <ul class = "nav navbar-nav navbar-right">
                <li><a href="#">Home</a></li>
