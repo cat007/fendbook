@@ -200,6 +200,10 @@ body{
 
 }
 
+.base-color {
+    color: #337ab7;
+}
+
 .popup_loginOr .popup_spanOr {
     display: block;
     position: relative;

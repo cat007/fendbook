@@ -3,7 +3,8 @@
 			<div class="container">
 
 				<div class="navbar-left">
-					<img src="Content/Images/rsz_books.png" alt="logo"> Book Store 
+					<!-- <img src="Content/Images/logo_1.png" alt="logo"> -->
+					<a href="http://localhost:8000/index.html#/home"><img src="Content/Images/logo_1.png" alt="logo"></a>
 				</div>
 
 				<button class="navbar-toggle" data-toggle="collapse" data-target = ".navbarHeaderCollapse">
@@ -15,11 +16,11 @@
 
 				<div class="collapse navbar-collapse navbarHeaderCollapse">
 					<ul class = "nav navbar-nav navbar-right">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Social Media</a></li>
+						<!-- <li class="active"><a href="#">Home</a></li> -->
+						<!-- <li><a href="#">Social Media</a></li> -->
 						<li><a href="#">Our Vision</a></li>
 						<li><a href="#">About Us</a></li>
-						<li><a href="#">Contact Us</a></li>
+						<li><a href="#contactus" data-toggle="modal">Contact Us</a></li>
 					</ul>
 				</div>
 			</div>
@@ -51,21 +52,75 @@
 	<div class="container">
 		<div class = "row">
 			<div class = "col-md-6">
-				<h3> <a href = "#">DONATE BOOKS GENEROUSLY FOR NOBLE CAUSE </a> </h3>
+				<h3 class="base-color">DONATE BOOKS GENEROUSLY FOR NOBLE CAUSE</h3>
 				<p> There are many people in our country who do net get the opportunity of education but we can help them to get them educated by donating our old books for free for them. </p>
-				<a href="#" class="btn btn-default"> Read More </a>
-
+				<!-- <a href="#" class="btn btn-default"> Read More </a> -->
 			</div>
 
 			<div class = "col-md-6">
-				<h3> <a href = "#">MAKE BEST USE OF YOUR OLD BOOKS </a> </h3>
+				<h3 class="base-color"> MAKE BEST USE OF YOUR OLD BOOKS</h3>
 				<p> There are many people in our country who do net get the opportunity of education but we can help them to get them educated by donating our old books for free for them. </p>
-				<a href="#" class="btn btn-default"> Read More </a>
+				<!-- <a href="#" class="btn btn-default"> Read More </a> -->
 
 			</div>
 
 		</div>
 	</div>
+
+
+
+
+<!-- Contact Us Pop-up HTML implementation -->
+<div class="modal fade" id="contactus" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+	<div class="modal-dialog login-modal-dialog">
+		<div class="modal-content login-modal">
+			<div class="modal-header login-modal-header modal-blue">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span area-hidden="true">&times;</span>
+				</button>
+				<h1 class="modal-title login-modal-title text-center" id="signinModalLabel">Send Your Queries</h1>				
+			</div>
+			<div class="model-body">
+						<!-- Tab Panes -->
+						<!-- <div class="tab-content"> -->
+					    	<div class="login-modal-form" id="home">
+					    		&nbsp;&nbsp;
+					    		<form name="contactForm" novalidate="novalidate">
+					    			<div class="form-group">			
+										<div class="input-group">
+											<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+											<input type="text" class="form-control" ng-model="reg_fullname" name="reg_fullname" id="reg_fullname" placeholder="Username" required>
+										</div>
+									</div>	
+									<div class="form-group">
+								    	<div class="input-group">
+								      		<div class="input-group-addon"><i>@</i></div>
+								      		<input type="email" name="contact_email" class="form-control" placeholder="somebody@example.com" ng-model="login_email" required>
+								    	</div>
+								    	<div class="help-block has-error error" ng-messages="contactForm.contact_email.$error">
+  											<div ng-message="email">Invalid Email</div>
+								    	</div>
+								  	</div>
+								  	<div class="form-group">
+								      	<textarea type="text"class="form-control" placeholder="Type Your Query Here" name="contact_message" rows="8" required></textarea>
+								  	</div>
+						  			<button type="submit" id="login_btn" class="btn btn-block bt-login center-block" ng-click="login()" data-dismiss="modal" ng-disabled="loginForm.$invalid">Send</button>
+						  			<div class="clearfix"></div>
+						  			
+						  			<div class="login-modal-footer">
+						  				
+						  			</div>
+								</form>
+					    	</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 
 <!-- Signin Pop-up HTML implementation -->
 <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinModalLabel" aria-hidden="true">
@@ -162,7 +217,7 @@
 					<div class="form-group">			
 						<div class="input-group">
 							<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
-							<input type="text" class="form-control" ng-model="reg_fullname" name="reg_fullname" id="reg_fullname" placeholder="Enter Fullname" required>
+							<input type="text" class="form-control" ng-model="reg_fullname" name="reg_fullname" id="reg_fullname" placeholder="Username" required>
 						</div>
 						<!-- <div class="help-block has-error error" ng-messages="signupform.reg_fullname.$error">
 						</div> -->
