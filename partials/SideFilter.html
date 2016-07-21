@@ -1,42 +1,62 @@
-<div ng-controller="customerCtrl">
+<div id="div1" ng-controller="customerCtrl">
 
    <script type="text/javascript">
-var country_list = ["Science fiction","Satire","Drama","Action and Adventure","Romance","Mystery","Horror","Self help","Health","Guide","Travel","Children's","Religion, Spirituality & New Age","Science","History","Math","Anthology","Poetry","Encyclopedias","Dictionaries","Comics","Art","Cookbooks","Diaries","Journals","Prayer books","Series","Trilogy","Biographies","Autobiographies","Fantasy"];
+
+   var list;
+          var request;
+            if (window.XMLHttpRequest) {
+                request = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+            } else {
+                throw new Error("Your browser don't support XMLHttpRequest");
+            }
+            var url = "http://localhost:3000/api/books/search/get_unique_search_params";
+            request.open('GET', url, false);
+            request.send(null);
+            if (request.status === 200) {
+            list = JSON.parse(request.responseText);
+            console.log("jsonResponse == ");
+            console.log(list);
+            }
+
+
+
+   console.log("bookService and books list = ");
+   console.log(list);
 
 $(document).ready(function(){
-
-   // var controllerScope = angular.element(controllerElement).scope();
-   var scope = angular.element($("#outer")).scope();
-   console.log("scope = ");
-   console.log(scope);
-   // console.log("results Params = ");
-   // console.log(controllerScope.resParams);
 // Instantiate the Bloodhound suggestion engine
 var movies = new Bloodhound({
     datumTokenizer: function (datum) {
         return Bloodhound.tokenizers.whitespace(datum.value);
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: $.map(country_list,function(item){
+    local: $.map(list,function(item){
       return {value : item};
     })
-    // remote: {
-    //   //Should have a new API
-    //     url: 'http://localhost:3000/api/books/search/get_unique_search_params?query=%QUERY',
-    //     wildcard: '%QUERY',
-    //     filter: function (results) {
-    //         console.log("results = ");
-    //         console.log(results);
-    //         return $.map(results,function(item){
-    //           return {
-    //             value : item
-    //           };
-    //       })
-            
+});
 
 
-    //     }
-    // }
+var selectedDatum;
+
+function getScope(ctrlName) {
+    var sel = 'div[ng-controller="' + ctrlName + '"]';
+    return angular.element(sel).scope();
+}
+
+$('.typeahead').on('typeahead:selected', function(event, datum) {
+  selectedDatum = datum;
+  scope = getScope('customerCtrl');
+  console.log("scope_out");
+  console.log(scope.$$childHead);
+  scope.$apply(function(){
+        scope.selectedBook = selectedDatum.value;
+    });
+  console.log("selectedDatum = ");
+  scope.bookSelectedNow();
+  console.log(selectedDatum.value);
+
 });
 
 
@@ -153,7 +173,8 @@ tt-highlight{
 
          <div class="collapse navbar-collapse navbarHeaderCollapse">
             <ul class = "nav navbar-nav navbar-center">
-               <input class="typeahead" type="text" id="typeahead" class="form-control"></input>
+               <input class="typeahead" sf-typeahead type="text" id="typeahead" 
+               class="form-control" ng-model="selectedBook"></input>
             </ul>
             <ul class = "nav navbar-nav navbar-right">
                <li><a href="#">Home</a></li>
@@ -413,7 +434,7 @@ tt-highlight{
             <div class="row">
                <div class="col-md-12">
                   <div class="col-md-6 facebook_button">
-                     <button type="button" class="btn btn-primary" ng-click="markBookSold(book.id)">Mark Sold</button>
+                     <!-- <button type="button" class="btn btn-primary" ng-click="markBookSold(book.id)">Mark Sold</button> -->
                   </div>
                   <div class="col-md-6 facebook_button">
                      <!-- Facebook -->

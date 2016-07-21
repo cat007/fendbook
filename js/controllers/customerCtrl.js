@@ -6,7 +6,7 @@ app.controller('customerCtrl',function($scope,$location,$rootScope,bookService,l
     console.log("User id = ");
     console.log(user_id);
 
-    		bookService.getAllBooksForUserId(user_id,$scope).then(function(response){
+    		bookService.getDefaultBooks().then(function(response){
 			console.log("customerCtrl change  1");
 			console.log(response);
 			 $scope.resBooks = response.data;
@@ -27,18 +27,6 @@ app.controller('customerCtrl',function($scope,$location,$rootScope,bookService,l
     var finalUrl='';
     var posted_for='';
     var post_for={"url":"","count":0};
-
-            bookService.getUniqueSearchParams().then(function(response){
-            console.log("COOL Response");
-            console.log(response);
-             $scope.resParams = response.data;
-             console.log("COOL Response CP 2");
-             console.log($scope.resParams);
-            // $location.path("/viewuploadedBook");
-
-
-        });
-
 
     $scope.bookCheckBox=function( ){
     	 console.log("Book CheckBox : ")
@@ -178,6 +166,15 @@ app.controller('customerCtrl',function($scope,$location,$rootScope,bookService,l
 
         });
 
+    }
+
+    $scope.bookSelectedNow = function(){
+        console.log("Book selcted");
+        console.log($scope.selectedBook);
+        console.log("Book Selected End")
+        bookService.getBookByAuthor($scope).then(function(response){
+            $scope.resBooks=response.data;
+        });
     }
 
     $scope.prepareFinalUrl=function(){
