@@ -8,6 +8,7 @@ app.config(function ($routeProvider) {
         .when('/successUpload', { templateUrl: 'partials/SuccessfulUpload.html', controller: 'successfulUploadCtrl'})
         .when('/manageBooks', { templateUrl: 'partials/ManageBooks.html', controller: 'manageBookCtrl'})
         .when('/book/:id',{templateUrl : 'partials/FullBookView.html', controller: 'manageBookCtrl'})
+        .when('/sellerBook/:id',{templateUrl : 'partials/SellerFullBookView.html', controller: 'manageSellerBookCtrl'})
         .when('/SideFilter',{templateUrl: 'partials/SideFilter.html',controller: 'customerCtrl'})
         .when('/viewuploadedBook', { templateUrl: 'partials/ViewUploadedBook.html', controller: 'sellerHomeCtrl'})
         .when('/forgotPassword/:serviceRequestId', { templateUrl: 'partials/forgotPassword.html', controller: 'forgotPwdCtrl'})
