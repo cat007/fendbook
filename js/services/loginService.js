@@ -102,7 +102,7 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
 			});
 		},
 
-
+	
 		isLogged:function(){
 			var sessionToken = $cookies.get('token');
 			if(angular.isUndefinedOrNull($cookies.get('user'))) {
@@ -137,6 +137,27 @@ app.factory('loginService',function($http,$location,$cookies,$cookieStore,sessio
         		}
         		return false;
 			}
+		},
+
+		sendQueriesToUs:function(scope){
+			var email = scope.contact_email;
+			var username = scope.contact_username;
+			var message = scope.user_message;
+
+			var qRequest = new FormData();
+			qRequest.append('email', scope.contact_email);
+			qRequest.append('username', scope.contact_username);
+			qRequest.append('message', scope.user_message);
+			qRequest.append('is_send_queries', 'y');
+
+			promiseService.sendMail(qRequest).then(function(response){
+				if (response.status == 200) {
+					message = "Dear " + username + " We have received your queries and we'll get back to you very soon, Thanks!"
+					alert(message);
+				}else{
+					alert("Error Occured...Please try again later");		
+				}
+			});
 		},
 
 		sendForgotPasswordInstruction:function(scope){

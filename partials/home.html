@@ -89,22 +89,22 @@
 					    			<div class="form-group">			
 										<div class="input-group">
 											<div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
-											<input type="text" class="form-control" ng-model="reg_fullname" name="reg_fullname" id="reg_fullname" placeholder="Username" required>
+											<input type="text" class="form-control" ng-model="contact_username" name="reg_fullname" id="reg_fullname" placeholder="Username" required>
 										</div>
 									</div>	
 									<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i>@</i></div>
-								      		<input type="email" name="contact_email" class="form-control" placeholder="somebody@example.com" ng-model="login_email" required>
+								      		<input type="email" name="contact_email" class="form-control" placeholder="somebody@example.com" ng-model="contact_email" required>
 								    	</div>
 								    	<div class="help-block has-error error" ng-messages="contactForm.contact_email.$error">
   											<div ng-message="email">Invalid Email</div>
 								    	</div>
 								  	</div>
 								  	<div class="form-group">
-								      	<textarea type="text" class="form-control" placeholder="Type Your Query Here" name="contact_message" rows="8" required></textarea>
+								      	<textarea type="text" class="form-control" placeholder="Type Your Query Here" name="contact_message" rows="8" ng-model="user_message" required></textarea>
 								  	</div>
-						  			<button type="submit"class="btn btn-block bt-login center-block" ng-click="login()" data-dismiss="modal" ng-disabled="contactForm.$invalid">Send</button>
+						  			<button type="submit"class="btn btn-block bt-login center-block" ng-click="sendQueries()" data-dismiss="modal" ng-disabled="contactForm.$invalid">Send</button>
 						  			<div class="clearfix"></div>
 						  			
 						  			<div class="login-modal-footer">
