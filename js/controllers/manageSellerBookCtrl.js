@@ -35,6 +35,11 @@ app.controller('manageSellerBookCtrl',function($scope,$cookies,$routeParams,logi
 			loginService.logout();
 			},
 
+				$scope.isLogin = function(){
+		loginService.isLogin();
+	},
+
+
 
 		$scope.markBookSold = function(bookId){
 

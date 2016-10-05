@@ -20,6 +20,10 @@ app.controller('sellerHomeCtrl',function($scope,$location,$rootScope,loginServic
 		loginService.logout();
 	},
 
+	$scope.isLogin = function(){
+		loginService.isLogin();
+	},
+
 	$scope.oldBook = function(){
 		$scope.type = "old";
 

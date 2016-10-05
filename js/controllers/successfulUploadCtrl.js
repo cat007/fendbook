@@ -7,7 +7,12 @@ app.controller('successfulUploadCtrl',function($scope,$location,$rootScope,bookS
 
 				$scope.logout = function(){
 			loginService.logout();
-			}
+			},
+
+				$scope.isLogin = function(){
+		loginService.isLogin();
+	}
+
 
 	
 });
